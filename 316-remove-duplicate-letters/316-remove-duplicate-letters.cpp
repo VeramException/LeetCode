@@ -18,6 +18,10 @@ class Solution
                 continue;
             
             // Basically using 'result' as a monotonic increasing stack
+            
+            // Logic: if there will be another 'result.back()' that we can use in future,
+            //        and if result.back() is alphabetically larger, then let's remove it from 'result'.
+            //        beause we can add it again to result in future anyway
             while (c < result.back() && count[result.back()])
             {
                 visited[result.back()] = false;
