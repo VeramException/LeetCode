@@ -1,3 +1,8 @@
+// Same questions:
+// LC 1277: https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+// LC 221: https://leetcode.com/problems/maximal-square/
+
+
 class Solution
 {
     public:
