@@ -27,14 +27,6 @@ class Solution
         }
         
         // Step-3: Insert <b></b> at Intervals
-   /*     string res(s);
-        for (int i=0; i<intervals.size(); i++)
-        {
-            // Eg: "abcdef", interval[0] = [2,2], interval[0] = [4,4] --> o/p => ab <b>c</b> d <b>e</b> f
-            res.insert(intervals[i].first  + 7*i    , "<b>");  // ==> res.insert(2+0)
-            res.insert(intervals[i].second + 7*i + 4, "</b>"); // ==> res.insert(2+4)
-        }
-        return res;*/
         string res(s);
         for (int i=intervals.size()-1; i>=0; i--)
         {
