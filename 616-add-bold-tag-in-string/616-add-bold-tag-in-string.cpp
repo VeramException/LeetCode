@@ -20,9 +20,8 @@ class Solution
         vector<pair<int, int>> intervals;
         for (auto item: rawIntervals)
         {
-            int n = intervals.size();
-            if(n>0 && item.first <= intervals[n-1].second + 1)
-                intervals[n-1].second = max(intervals[n-1].second, item.second);
+            if(intervals.size()>0 && item.first <= intervals.back().second + 1)
+                intervals.back().second = max(intervals.back().second, item.second);
             else
                 intervals.push_back(item);
         }
