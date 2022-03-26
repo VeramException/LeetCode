@@ -12,7 +12,7 @@ public:
             if (nums[mid] == target)
                 return mid;
             
-            if (target > nums[mid])
+            if (target > nums[mid]) 
                 lo = mid+1;
             else
                 hi = mid-1;
