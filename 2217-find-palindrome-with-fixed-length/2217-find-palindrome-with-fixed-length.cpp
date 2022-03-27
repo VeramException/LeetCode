@@ -21,10 +21,8 @@ class Solution
         long long minVal = 0;
         long long maxVal = 0;
         
-        while (minDigits-- > 0)
-            minVal = minVal*10 + 9;
-        while (maxDigits-- > 0)
-            maxVal = maxVal*10 + 9;
+        while (minDigits-- > 0) minVal = minVal*10 + 9;
+        while (maxDigits-- > 0) maxVal = maxVal*10 + 9;
         
         if (k > (maxVal - minVal))
             return -1;
