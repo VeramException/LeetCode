@@ -2,28 +2,28 @@ class Solution
 {
     public:
     vector<long long> kthPalindrome(vector<int>& queries, int length)
-    {   
-        vector<long long> res;
-        for (auto const k: queries)
-            res.push_back(getkthPalindrome(k, length));
-        return res;
-    }
-    
-    long long getkthPalindrome(int k, int length)
     {
         // We only think of half-number.
-        // i.e., for EVEN -> 123321,  we only think of first 3 digits. It can be from 99+1 to 999
-        // i.e., for ODD  -> 1234321, we only think of first 4 digits. It can be from 999+1 to 9999
+        // i.e., for EVEN -> 123321,  we only think of first 3 digits. It can be from 99+1 to 999   (minVal+1 -> maxVal)
+        // i.e., for ODD  -> 1234321, we only think of first 4 digits. It can be from 999+1 to 9999 (minVal+1 -> maxVal)
 
         int minDigits = (length%2 == 0)? (length/2 - 1): (length/2);
         int maxDigits = (length%2 == 0)? (length/2): (length/2 + 1);
         
         long long minVal = 0;
-        long long maxVal = 0;
-        
         while (minDigits-- > 0) minVal = minVal*10 + 9;
-        while (maxDigits-- > 0) maxVal = maxVal*10 + 9;
         
+        long long maxVal = 0;
+        while (maxDigits-- > 0) maxVal = maxVal*10 + 9;
+
+        vector<long long> res;
+        for (auto const k: queries)
+            res.push_back(getkthPalindrome(k, length, minVal, maxVal));
+        return res;
+    }
+    
+    long long getkthPalindrome(int k, int length, long long minVal, long long maxVal)
+    {   
         if (k > (maxVal - minVal))
             return -1;
         
