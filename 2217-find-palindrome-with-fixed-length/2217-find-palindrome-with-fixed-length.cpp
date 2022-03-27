@@ -11,28 +11,15 @@ class Solution
     
     long long getIthPalindrome(int i, int length)
     {
-        long long res;
-        
         // We only think of half-number.
         // i.e., for EVEN -> 123321,  we only think of first 3 digits. It can be from 99+1 to 999
         // i.e., for ODD  -> 1234321, we only think of first 4 digits. It can be from 999+1 to 9999
+
+        int minDigits = (length%2 == 0)? (length/2 - 1): (length/2);
+        int maxDigits = (length%2 == 0)? (length/2): (length/2 + 1);
         
         long long minVal = 0;
         long long maxVal = 0;
-        
-        int minDigits = 0;
-        int maxDigits = 0;
-        
-        if (length%2 == 0)
-        {
-            minDigits = length/2 - 1;
-            maxDigits = length/2;
-        }
-        else
-        {
-            minDigits = length/2;
-            maxDigits = length/2 + 1;
-        }
         
         while (minDigits-- > 0)
             minVal = minVal*10 + 9;
