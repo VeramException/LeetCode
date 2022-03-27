@@ -34,17 +34,13 @@ class Solution
     {
         int lo = 0;
         int hi = nums.size()-1;
-        
-        if (nums[lo] == 0)
-            return 0;
-        if (nums[hi] == 1)
-            return hi+1;        
-        
-        while (lo < hi)
+
+        // Get the index of first '0' in the array => implies # of 1s in array
+        while (lo <= hi)
         {
             int mid = (lo+hi)/2;
             if (nums[mid] == 0)
-                hi = mid;
+                hi = mid - 1;
             else
                 lo = mid+1;
         }
