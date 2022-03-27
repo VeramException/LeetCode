@@ -8,12 +8,12 @@ class Solution
         int N = mat[0].size();
         for (int i=0; i<mat.size(); i++)
         {
-            int count = getCount(mat[i]);
+            int count = countOnes(mat[i]);
             
             if (maxHeap.size() < k)
                 maxHeap.push({count, i});
-            else if (maxHeap.top().first > count
-                     || maxHeap.top().first == count && maxHeap.top().second > i)
+            else if (maxHeap.top().first > count ||
+                     maxHeap.top().first == count && maxHeap.top().second > i)
             {
                 maxHeap.pop();
                 maxHeap.push({count, i});
@@ -30,7 +30,7 @@ class Solution
         return res;
     }
     
-    int getCount(vector<int> &nums)
+    int countOnes(vector<int> &nums)
     {
         int lo = 0;
         int hi = nums.size()-1;
