@@ -1,6 +1,9 @@
 class Solution
 {
     public:
+    long long minVal;
+    long long maxVal;
+    
     vector<long long> kthPalindrome(vector<int>& queries, int length)
     {
         // We only think of half-number.
@@ -10,19 +13,16 @@ class Solution
         int minDigits = (length%2 == 0)? (length/2 - 1): (length/2);
         int maxDigits = (length%2 == 0)? (length/2): (length/2 + 1);
         
-        long long minVal = 0;
         while (minDigits-- > 0) minVal = minVal*10 + 9;
-        
-        long long maxVal = 0;
         while (maxDigits-- > 0) maxVal = maxVal*10 + 9;
 
         vector<long long> res;
         for (auto const k: queries)
-            res.push_back(getkthPalindrome(k, length, minVal, maxVal));
+            res.push_back(getkthPalindrome(k, length));
         return res;
     }
     
-    long long getkthPalindrome(int k, int length, long long minVal, long long maxVal)
+    long long getkthPalindrome(int k, int length)
     {   
         if (k > (maxVal - minVal))
             return -1;
