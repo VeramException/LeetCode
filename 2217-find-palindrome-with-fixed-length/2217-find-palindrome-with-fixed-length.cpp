@@ -4,12 +4,12 @@ class Solution
     vector<long long> kthPalindrome(vector<int>& queries, int length)
     {   
         vector<long long> res;
-        for (auto const q: queries)
-            res.push_back(getIthPalindrome(q, length));
+        for (auto const k: queries)
+            res.push_back(getkthPalindrome(k, length));
         return res;
     }
     
-    long long getIthPalindrome(int i, int length)
+    long long getkthPalindrome(int k, int length)
     {
         // We only think of half-number.
         // i.e., for EVEN -> 123321,  we only think of first 3 digits. It can be from 99+1 to 999
@@ -26,10 +26,10 @@ class Solution
         while (maxDigits-- > 0)
             maxVal = maxVal*10 + 9;
         
-        if (i > (maxVal - minVal))
+        if (k > (maxVal - minVal))
             return -1;
         
-        string s1 = to_string(minVal + i);
+        string s1 = to_string(minVal + k);
         string s2 = (length%2 == 0)? s1: s1.substr(0, length/2);        
         reverse(s2.begin(), s2.end());
                 
