@@ -6,8 +6,8 @@ class Solution
     
     vector<long long> kthPalindrome(vector<int>& queries, int length)
     {
-        calculateMinMaxVals(length);
         vector<long long> res;
+        calculateMinMaxVals(length);
         for (auto const k: queries)
             res.push_back(getkthPalindrome(k, length));
         return res;
