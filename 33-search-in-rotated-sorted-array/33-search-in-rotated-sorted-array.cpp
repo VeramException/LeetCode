@@ -10,6 +10,9 @@ class Solution
         {
             int mid = (left + right) / 2;
             
+            if (nums[mid] == target)
+                return mid;
+            
             if (nums[mid] < target)
             {
                 // If middle is on right part, we have: nums[left] > nums[right] >= nums[middle].
@@ -22,7 +25,7 @@ class Solution
                 else 
                     left = mid + 1;
             }
-            else if (nums[mid] > target)
+            else
             {
                 // If middle is on left part, we have: nums[middle] >= nums[left] > nums[right]
                 // When middle is on left part and target is smaller than nums[left] (means not in nums[left .. middle]),
@@ -34,8 +37,6 @@ class Solution
                 else 
                     right = mid - 1;
             }
-            else //nums[mid] == target
-                return mid;
         }
         
         return -1;
