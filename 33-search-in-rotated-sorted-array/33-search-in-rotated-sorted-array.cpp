@@ -13,7 +13,7 @@ class Solution
             if (nums[mid] == target)
                 return mid;
             
-            // If left-side is sorted
+            // If left-side is sorted  i.e., PIVOT is on right side
             if (nums[left] <= nums[mid])
             {
                 if (target < nums[left] || target > nums[mid])
@@ -21,7 +21,7 @@ class Solution
                 else
                     right = mid-1;
             }
-            // If right-side is sorted
+            // If right-side is sorted  i.e., PIVOT is on left side
             else
             {
                 if (target < nums[mid] || target > nums[right])
