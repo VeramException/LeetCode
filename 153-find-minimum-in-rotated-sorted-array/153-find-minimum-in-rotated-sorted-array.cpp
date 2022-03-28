@@ -15,6 +15,6 @@ class Solution
                 r = mid;
         }
         
-        return nums[r];
+        return nums[l];
     }
 };
