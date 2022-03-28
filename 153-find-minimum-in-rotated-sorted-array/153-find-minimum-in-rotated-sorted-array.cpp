@@ -15,6 +15,7 @@ class Solution
                 r = mid;
         }
         
+        // at this point, l == r, does matter if we return nums[l] or nums[r]
         return nums[l];
     }
 };
