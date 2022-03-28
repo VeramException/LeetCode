@@ -3,7 +3,10 @@ class Solution
     public:
     int search(vector<int>& nums, int target)
     {
-        for (int left = 0, right = nums.size() - 1; left <= right;)
+        int left = 0;
+        int right = nums.size()-1;
+        
+        while (left <= right)
         {
             int mid = (left + right) / 2;
             
