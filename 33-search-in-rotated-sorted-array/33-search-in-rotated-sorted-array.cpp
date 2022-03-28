@@ -13,19 +13,21 @@ class Solution
             if (nums[mid] == target)
                 return mid;
             
-            if (nums[mid] < target)
+            // If left-side is sorted
+            if (nums[left] <= nums[mid])
             {
-                if (nums[left] > nums[mid] && target > nums[right])
-                    right = mid - 1;
-                else 
-                    left = mid + 1;
+                if (target < nums[left] || target > nums[mid])
+                    left = mid+1;
+                else
+                    right = mid-1;
             }
+            // If right-side is sorted
             else
             {
-                if (nums[mid] > nums[right] && target < nums[left])
-                    left = mid + 1;
-                else 
-                    right = mid - 1;
+                if (target < nums[mid] || target > nums[right])
+                    right = mid-1;
+                else
+                    left = mid+1;
             }
         }
         
