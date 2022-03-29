@@ -3,17 +3,28 @@ class Solution
     public:
     int findDuplicate(vector<int>& nums)
     {
-        int duplicate = -1;
-        for (int i=0; i<nums.size(); i++)
+        // Phase-1: Find loop
+        int slow = nums[0];
+        int fast = nums[0];
+        bool isCycleFound = false;
+        
+        while (!isCycleFound)
         {
-            int cur = abs(nums[i]);
-            if (nums[cur] < 0)
-            {
-                return cur;
-            }
-            nums[cur] *= -1;
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            
+            if (slow == fast)
+                isCycleFound = true;
         }
         
-        return duplicate;
+        // Phase-2
+        slow = nums[0];
+        while (slow != fast)
+        {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
     }
 };
