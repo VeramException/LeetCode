@@ -1,12 +1,15 @@
-class Solution
+class Solution 
 {
     public:
-    int findDuplicate(vector<int>& nums)
+    int findDuplicate(vector<int>& nums) 
     {
-        // Phase-1: Find loop
+        // ***********
+        // * Phase-1 *
+        // ***********
+        bool isCycleFound = false;
+        
         int slow = nums[0];
         int fast = nums[0];
-        bool isCycleFound = false;
         
         while (!isCycleFound)
         {
@@ -17,7 +20,9 @@ class Solution
                 isCycleFound = true;
         }
         
-        // Phase-2
+        // ***********
+        // * Phase-2 *
+        // ***********
         slow = nums[0];
         while (slow != fast)
         {
