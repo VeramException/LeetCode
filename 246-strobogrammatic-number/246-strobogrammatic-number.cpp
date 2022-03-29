@@ -7,7 +7,7 @@ class Solution
         
         for (int i=0, j=num.size()-1; i<=j; i++,j--)
         {
-            if (m.find(num[i]) == m.end() || m[num[i]] != num[j])
+            if (m.count(num[i]) == 0 || m[num[i]] != num[j])
                 return false;
         }
         
