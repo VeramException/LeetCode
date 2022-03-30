@@ -1,21 +1,12 @@
 class Solution
 {
     public:
-    int rows;
-    int cols;
-    
-    int getVal(vector<vector<int>>& matrix, int index)
-    {
-        int r = index/cols;
-        int c = index%cols;
-        
-        return matrix[r][c];
-    }
+
     
     bool searchMatrix(vector<vector<int>>& matrix, int target)
     {
-        rows = matrix.size();
-        cols = matrix[0].size();
+        int rows = matrix.size();
+        int cols = matrix[0].size();
         
         int lo = 0;
         int hi = rows*cols -1;
@@ -24,12 +15,13 @@ class Solution
         {
             int mid = (lo+hi)/2;
             
-            int midVal = getVal(matrix, mid);
+            int r = mid/cols;
+            int c = mid%cols;
                 
-            if (midVal == target)
+            if (matrix[r][c] == target)
                 return true;
             
-            if (target < midVal)
+            if (target < matrix[r][c])
                 hi = mid-1;
             else
                 lo = mid+1;
