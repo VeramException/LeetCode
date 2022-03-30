@@ -7,9 +7,10 @@ class Solution
     {
         int rows = matrix.size();
         int cols = matrix[0].size();
+        int n = rows*cols;
         
         int lo = 0;
-        int hi = rows*cols -1;
+        int hi = n-1;
         
         while (lo <= hi)
         {
