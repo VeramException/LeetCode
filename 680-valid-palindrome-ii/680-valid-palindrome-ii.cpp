@@ -16,12 +16,14 @@ class Solution
         
         while (l < r)
         {
-            if (s[l] != s[r])
+            if (s[l] == s[r])
             {
+                l++;
+                r--;
+            }
+            else
                 return isValidPalindromeUtil(s, l+1, r, count+1) ||
                        isValidPalindromeUtil(s, l, r-1, count+1);
-            }
-            l++, r--;
         }
         return true;
     }
