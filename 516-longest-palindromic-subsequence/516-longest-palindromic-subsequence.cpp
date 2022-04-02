@@ -3,10 +3,8 @@ class Solution
     public:
     int longestPalindromeSubseq(string s)
     {
-        string text1 = s;
-        
-        string text2 = text1;
-        reverse(text2.begin(), text2.end());
+        string text1 = s;        
+        string text2 = string(s.rbegin(), s.rend());
         
         return longestCommonSubsequence(text1, text2);
     }
