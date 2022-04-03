@@ -9,30 +9,18 @@ class Solution
         int h2 = stoi(correct.substr(0, 2));
         int m2 = stoi(correct.substr(3, 2));
         
-        int mm1 = h1*60+m1;
-        int mm2 = h2*60+m2;
+        int diffMins = (h2*60+m2) - (h1*60+m1);        
         
         int count = 0;
         
-        while (mm2-mm1 >= 60)
+        vector<int> ops = {60,15,5,1};
+        for (auto op: ops)
         {
-            mm1 += 60;
-            count++;
-        }        
-        while (mm2-mm1 >= 15)
-        {
-            mm1 += 15;
-            count++;
-        }
-        while (mm2-mm1 >= 5)
-        {
-            mm1 += 5;
-            count++;
-        }
-        while (mm2-mm1 >= 1)
-        {
-            mm1 += 1;
-            count++;
+            if (diffMins >= op)
+            {
+                count += diffMins/op;
+                diffMins = diffMins%op;
+            }
         }
         
         return count;
