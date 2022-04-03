@@ -16,11 +16,8 @@ class Solution
         vector<int> ops = {60,15,5,1};
         for (auto op: ops)
         {
-            if (diffMins >= op)
-            {
-                count += diffMins/op;
-                diffMins = diffMins%op;
-            }
+            count += diffMins/op;
+            diffMins = diffMins%op;
         }
         
         return count;
