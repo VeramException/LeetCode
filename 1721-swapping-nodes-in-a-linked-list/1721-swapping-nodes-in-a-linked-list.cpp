@@ -14,12 +14,9 @@ class Solution
     ListNode* swapNodes(ListNode* head, int k)
     {
         ListNode* l = head;
-        int x = k;
-        while (l != nullptr && x > 1)
-        {
+        int i = 1;
+        while (l != nullptr && i++ < k)
             l = l->next;
-            x--;
-        }
         
         ListNode* r1 = head;
         ListNode* r2 = l;
