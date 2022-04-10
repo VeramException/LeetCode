@@ -14,8 +14,7 @@ public:
                 odd.push(s[i]);
         }
 
-        string res = s;
-        for (int i=0; i<res.size(); i++)
+        for (int i=0; i<s.size(); i++)
         {
             if ((s[i] - '0') % 2 == 0)
                 s[i] = even.top(), even.pop();
