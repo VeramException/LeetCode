@@ -2,12 +2,7 @@ class Solution
 {
     public:
     int calPoints(vector<string>& ops)
-    {
-        int prev1;
-        int prev2;
-        
-        // prev1, prev2, curr
-        
+    {        
         vector<int> scores;
         for (string op: ops)
         {
@@ -29,9 +24,6 @@ class Solution
             }
         }
         
-        int res = 0;
-        for (int score: scores)
-            res += score;
-        return res;
+        return accumulate(scores.begin(), scores.end(), 0);   // sum of vector elements.;
     }
 };
