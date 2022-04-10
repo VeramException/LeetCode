@@ -12,11 +12,16 @@ class Solution
         
         for (int i=0; i<nums.size()-2; i++)
         {
+            // optimization
+            if(nums[i]+nums[i+1]+nums[i+2]>=target)
+                break;
+            
             int j = i+1;
             int k = nums.size()-1;
             
             while (j < k)
             {
+                // optimization - Important
                 while (j<k && nums[i]+nums[j]+nums[k] >= target)
                     k--;
                  
