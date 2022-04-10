@@ -11,11 +11,7 @@ class Solution
         vector<int> scores;
         for (string op: ops)
         {
-            if (op.find_first_not_of("-0123456789") == std::string::npos)
-            {
-                scores.push_back(stoi(op));
-            }
-            else if (op == "+")
+            if (op == "+")
             {
                 int a = scores[scores.size()-1];
                 int b = scores[scores.size()-2];
@@ -25,10 +21,14 @@ class Solution
             {
                 scores.pop_back();
             }
-            else   // op == "D"
+            else if (op == "D")
             {
                 scores.push_back(2*scores.back());
-            }            
+            }
+            else
+            {
+                scores.push_back(stoi(op));
+            }
         }
         
         int res = 0;
