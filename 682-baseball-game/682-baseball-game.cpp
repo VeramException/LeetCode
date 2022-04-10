@@ -13,9 +13,7 @@ class Solution
         {
             if (op == "+")
             {
-                int a = scores[scores.size()-1];
-                int b = scores[scores.size()-2];
-                scores.push_back(a+b);
+                scores.push_back(scores[scores.size()-1] + scores[scores.size()-2]);
             }
             else if (op == "C")
             {
