@@ -1,51 +1,45 @@
-class Solution {
-public:
-    vector<vector<int>> threeSum(vector<int>& nums) 
+class Solution
+{
+    public:
+    vector<vector<int>> threeSum(vector<int>& nums)
     {
-        int numsSize = nums.size();
-        vector<vector<int>> result;
-
-        if (numsSize < 3)
-            return result;
-
-        // sort the array
-        std::sort(nums.begin(), nums.end());
-
-        for (int i = 0; i < numsSize-2; i++)
+        vector<vector<int>> res;
+        
+        int N = nums.size();
+        if (N<3)
+            return res;
+        
+        sort(nums.begin(), nums.end());
+        
+        for (int i=0; i<N-2; i++)
         {
-            if (i > 0 && nums[i] == nums[i - 1])
-            {
+            // ignore duplicates
+            if (i>0 && nums[i-1]==nums[i])
                 continue;
-            }
-
-            int requiredTwoSum = 0 - nums[i];
-
-            // Two pointer technique to find requiredTwoSum in a sorted array
-            int left = i + 1;
-            int right = numsSize - 1;
-            while (left < right)
+            
+            int twoSumTarget = 0 - nums[i];
+            int l = i+1;
+            int r = N-1;
+            while (l < r)
             {
-                if (nums[left] + nums[right] == requiredTwoSum)
+                if (nums[l]+nums[r] == twoSumTarget)
                 {
-                    result.push_back({nums[i],nums[left],nums[right]});
+                    res.push_back({nums[i],nums[l],nums[r]});
+                
+                    // ignore duplicates
+                    while (l<r && nums[l]==nums[l+1]) l++;
+                    while (l<r && nums[r]==nums[r-1]) r--;
                     
-                    while (left < right && nums[left] == nums[left + 1]) left++;
-                    while (left < right && nums[right] == nums[right - 1]) right--;
-
-                    left++;
-                    right--;
+                    l++;
+                    r--;
                 }
-                else if (nums[left] + nums[right] > requiredTwoSum)
-                {
-                    right = right - 1;
-                }
-                else if (nums[left] + nums[right] < requiredTwoSum)
-                {
-                    left = left + 1;
-                }
-            }
-        }
-
-        return result;
+                else if (nums[l]+nums[r] > twoSumTarget)
+                    r--;
+                else
+                    l++;
+            }            
+        }  
+        
+        return res;
     }
 };
