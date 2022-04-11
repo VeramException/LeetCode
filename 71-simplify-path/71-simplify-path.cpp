@@ -13,28 +13,19 @@ class Solution
                 while (i<N && path[i] == '/')
                     i++;
             }
-            // ".."
-            else if ((i == N-2 && path[i] == '.' && path[i+1] == '.') ||
-                    (i < N-2 && path[i] == '.' && path[i+1] == '.' && path[i+2] == '/'))
-            {
-                if (!names.empty())
-                    names.pop_back();
-                i = i+2;
-            }
-            else if ((i==N-1 && path[i]=='.') ||
-                     (i<N-1 && path[i]=='.' && path[i+1]=='/'))
-            {
-                i++;
-            }
             else
             {
-                string name;
-                while (i<N && path[i] != '/')
+                string nextDir;
+                while (i<N && path[i]!='/')
+                    nextDir += path[i++];
+                
+                if (nextDir == "..")
                 {
-                    name.push_back(path[i]);
-                    i++;
+                    if(!names.empty())
+                        names.pop_back();
                 }
-                names.push_back(name);
+                else if (nextDir != ".")
+                    names.push_back(nextDir);
             }
         }
         
