@@ -15,8 +15,8 @@ class Solution
         {
             for (int c=0; c<cols; c++)
             {
-                int linearIndex    = r*cols + c;
-                int newLinearIndex = (linearIndex + k)%(rows*cols);
+                int oldlinearIndex    = r*cols + c;
+                int newLinearIndex = (oldlinearIndex + k)%(rows*cols);
                 
                 int rr = newLinearIndex/cols;
                 int cc = newLinearIndex%cols;
