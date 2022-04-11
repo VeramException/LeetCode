@@ -5,6 +5,7 @@ vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
     int m = grid.size();
     int n = grid[0].size();
 
+    k = k % (m*n);
     while(k--)
     {
        for(int i=0;i<m;++i)
