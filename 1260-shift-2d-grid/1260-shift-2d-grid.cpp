@@ -7,10 +7,7 @@ class Solution
         int cols = grid[0].size();
         
         // After rows*cols shifts, the result grid will be same as original input grid.
-        if (k >= rows*cols)
-            k = k % (rows*cols);
-        
-        if (k == 0)
+        if (k % (rows*cols) == 0)
             return grid;
         
         vector<vector<int>> res(rows, vector<int>(cols, 0));
