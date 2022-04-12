@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-    vector<int> monthDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    vector<int> daysOfMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     
     int daysBetweenDates(string date1, string date2)
     {
@@ -14,11 +14,11 @@ class Solution
         int m = stoi(date.substr(5,2));
         int d = stoi(date.substr(8,2));
         
-        for (int yi=1971; yi<y; yi++)
-            d += isLeapYear(yi)? 366: 365;
+        for (int iy=1971; iy<y; iy++)
+            d += isLeapYear(iy)? 366: 365;
 
-        for (int mi=0; mi<m-1; mi++)
-            d += monthDays[mi];
+        for (int im=0; im<m-1; im++)
+            d += daysOfMonth[im];
         
         if (m > 2 && isLeapYear(y))
             d++;
