@@ -20,10 +20,10 @@ class Solution
         
         
         // Hack: To avoid extra space.
-        // 0      0 in both original & new matrix
-        // 1      1 in both original & new matrix
-        // 2 -> 0 in original matrix, 1 in new matrix
-        // 3 -> 1 in original matrix, 0 in new matrix
+        // 0 ===> 0 in both original & new matrix
+        // 1 ===> 1 in both original & new matrix
+        // 2 ===> 0 in original matrix, 1 in new matrix
+        // 3 ===> 1 in original matrix, 0 in new matrix
         
         for (int r=0; r<rows; r++)
         {
