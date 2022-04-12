@@ -34,12 +34,7 @@ class Solution
                 if (board[r][c] == 0 && live == 3)
                     nextBoard[r][c] = 1;
                 else if (board[r][c] == 1)
-                {
-                    if (live < 2 || live > 3)
-                        nextBoard[r][c] = 0;
-                    else
-                        nextBoard[r][c] = 1;
-                }
+                    nextBoard[r][c] = (live < 2 || live > 3)? 0: 1;
             }
         }
         
