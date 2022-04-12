@@ -18,7 +18,13 @@ class Solution
         // ========================
         // neighbors   = 3, it becomes '1
         
-        vector<vector<int>> nextBoard(rows, vector<int>(cols, 0));
+        
+        // Let's make some codes.
+        // 0      same in both original matrix, new matrix
+        // 1      same in both original matrix, new matrix
+        // 2 -> 0 in original matrix, 1 in new matrix
+        // 3 -> 1 in original matrix, 0 in new matrix
+        
         for (int r=0; r<rows; r++)
         {
             for (int c=0; c<cols; c++)
@@ -29,17 +35,24 @@ class Solution
                     int rr = r+n[0];
                     int cc = c+n[1];
                     if (rr >= 0 && rr < rows && cc >=0 && cc < cols)
-                        live += board[rr][cc];
+                        live += (board[rr][cc] == 1 || board[rr][cc] == 3)? 1: 0;
                 }
                 if (board[r][c] == 0 && live == 3)
-                    nextBoard[r][c] = 1;
+                    board[r][c] = 2;
                 else if (board[r][c] == 1)
-                    nextBoard[r][c] = (live < 2 || live > 3)? 0: 1;
+                    board[r][c] = (live < 2 || live > 3)? 3: 1;
             }
         }
         
         for (int r=0; r<rows; r++)
+        {
             for (int c=0; c<cols; c++)
-                board[r][c] = nextBoard[r][c];
+            {
+                if (board[r][c] == 2)
+                    board[r][c] = 1;
+                if (board[r][c] == 3)
+                    board[r][c] = 0;
+            }
+        }
     }
 };
