@@ -23,7 +23,7 @@ class Solution
     {
         // si = start index
         
-        // Only one element remaining
+        // Edge Case - 1: Only one element remaining
         if (res.size() == (rows*cols)-1)
             res.push_back(matrix[si][si]);
         
@@ -31,7 +31,7 @@ class Solution
         // [si,si] -> [si, cols-si-1]
         int r = si;
         int c = si;
-        while (c < cols-si-1 && res.size() < rows*cols)
+        while (c < cols-si-1 && res.size() < rows*cols) // Edge case -2: Add "res.size() < rows*cols" in all while loops
             res.push_back(matrix[r][c++]);
         
         // Top to Bottom
