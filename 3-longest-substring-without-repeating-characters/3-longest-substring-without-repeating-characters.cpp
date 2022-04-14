@@ -5,17 +5,20 @@ class Solution
     {
         unordered_map<char, int> m; // <char, index>
         
-        int l=0, r=0, maxLength=0;
+        int l = 0;
+        int r = 0;
+        int maxLength = 0;
         while (r < s.size())
         {
-            if (m.count(s[r]) > 0)
+            int value = s[r];
+            if (m.count(value) > 0)
             {
-                while (l <= m[s[r]])
+                while (l <= m[value])
                     m.erase(m.find(s[l++]));
             }
             
             maxLength = max(maxLength, r-l+1);
-            m[s[r]] = r;
+            m[value] = r;
             r++;
         }
         
