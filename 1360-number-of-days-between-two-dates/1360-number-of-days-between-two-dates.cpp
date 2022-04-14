@@ -29,8 +29,8 @@ class Solution
         if (m>2 && isLeapYear(y))
             days++;
         
-        // Important: We need to add count # of Leap years from 0 to y
-        days += countLeapYears(y);
+        // Important: We need to add count # of Leap years from 0 to y-1
+        days += countLeapYears(y-1);
         
         return days;
     }
@@ -42,7 +42,6 @@ class Solution
     
     int countLeapYears(int y)
     {
-        y--;
         return floor(y/4) - floor(y/100) + floor(y/400);
     }
 };
