@@ -5,13 +5,16 @@ class Solution
     
     int daysBetweenDates(string date1, string date2)
     {
-        return ((date1 > date2)? daysBetweenDatesUtil(date2, date1): daysBetweenDatesUtil(date1, date2));
-    }
-    
-    int daysBetweenDatesUtil(string date1, string date2)
-    {
-        int y1 = stoi(date1.substr(0,4));
-        return daysFromLastYear(date2, y1-1) - daysFromLastYear(date1, y1-1);
+        if (date1 < date2)
+        {
+            int y1 = stoi(date1.substr(0,4));
+            return daysFromLastYear(date2, y1-1) - daysFromLastYear(date1, y1-1);            
+        }
+        else
+        {
+            int y2 = stoi(date2.substr(0,4));
+            return daysFromLastYear(date1, y2-1) - daysFromLastYear(date2, y2-1);
+        }
     }
     
     int daysFromLastYear(string date, int fromYear)
