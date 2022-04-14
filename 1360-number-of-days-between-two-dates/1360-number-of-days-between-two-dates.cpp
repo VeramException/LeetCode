@@ -43,7 +43,6 @@ class Solution
     int countLeapYears(int y)
     {
         y--;
-        int ly = floor(y/4) - floor(y/100) + floor(y/400);
-        return ly;
+        return floor(y/4) - floor(y/100) + floor(y/400);
     }
 };
