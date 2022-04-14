@@ -5,40 +5,45 @@ class Solution
     
     int daysBetweenDates(string date1, string date2)
     {
-        if (date1 < date2)
-        {
-            int y1 = stoi(date1.substr(0,4));
-            return daysFromYear(date2, y1-1) - daysFromYear(date1, y1-1);            
-        }
-        else
-        {
-            int y2 = stoi(date2.substr(0,4));
-            return daysFromYear(date1, y2-1) - daysFromYear(date2, y2-1);
-        }
+        // Count days from 0-Jan-0000 to date1
+        int days1 = daysFromZero(date1);
+        
+        // Count days from 0-Jan-0000 to date2
+        int days2 = daysFromZero(date2);
+        
+        return abs(days1-days2);
     }
     
-    int daysFromYear(string date, int fromYear)
+    int daysFromZero(string date)
     {
-        vector<int> daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        
         int y = stoi(date.substr(0,4));
         int m = stoi(date.substr(5,2));
         int d = stoi(date.substr(8,2));
         
-        for (int iy=fromYear; iy<y; iy++)
-            d += isLeapYear(iy)? 366: 365;
+        int days = 365*y + d;
         
-        for (int im=0; im<m-1; im++)
-            d += daysInMonth[im];
+        for (int i=0; i<m-1; i++)
+            days += daysOfMonth[i];
         
+        // Add current month days, and also add '1' extra if we are already past Feb and if this is a Leap year
         if (m>2 && isLeapYear(y))
-            d++;
+            days++;
         
-        return d;
+        // Important: We need to add count # of Leap years from 0 to y
+        days += countLeapYears(y);
+        
+        return days;
     }
     
     bool isLeapYear(int y)
     {
         return (y % 4 == 0) && (y % 100 != 0 || y % 400 == 0);
+    }
+    
+    int countLeapYears(int y)
+    {
+        y--;
+        int ly = floor(y/4) - floor(y/100) + floor(y/400);
+        return ly;
     }
 };
