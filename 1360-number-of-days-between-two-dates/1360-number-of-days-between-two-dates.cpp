@@ -8,16 +8,16 @@ class Solution
         if (date1 < date2)
         {
             int y1 = stoi(date1.substr(0,4));
-            return daysFromLastYear(date2, y1-1) - daysFromLastYear(date1, y1-1);            
+            return daysFromYear(date2, y1-1) - daysFromYear(date1, y1-1);            
         }
         else
         {
             int y2 = stoi(date2.substr(0,4));
-            return daysFromLastYear(date1, y2-1) - daysFromLastYear(date2, y2-1);
+            return daysFromYear(date1, y2-1) - daysFromYear(date2, y2-1);
         }
     }
     
-    int daysFromLastYear(string date, int fromYear)
+    int daysFromYear(string date, int fromYear)
     {
         vector<int> daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         
