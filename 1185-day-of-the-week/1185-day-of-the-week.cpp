@@ -2,24 +2,23 @@ class Solution
 {
     public:
     vector<int> daysOfMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};    
-    vector<string> daysOfWeek = {"Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"};
+    vector<string> daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     
     string dayOfTheWeek(int day, int month, int year)
     {
-        int totalDays = daysFrom1971(day, month, year);
+        int totalDays = daysFromZero(day, month, year);
         return daysOfWeek[(totalDays-1)%7];
     }
     
-    int daysFrom1971(int d, int m, int y)
-    {        
-        for (int iy=1971; iy<y; iy++)
-            d += isLeapYear(iy)? 366: 365;
-
-        for (int im=0; im<m-1; im++)
-            d += daysOfMonth[im];
+    int daysFromZero(int d, int m, int y)
+    {       
+        for (int i=0; i<m-1; i++)
+            d += daysOfMonth[i];
         
-        if (m > 2 && isLeapYear(y))
+        if (m>2 && isLeapYear(y))
             d++;
+        
+        d += 365*y + countLeapYears(y-1);
         
         return d;
     }
@@ -27,5 +26,10 @@ class Solution
     bool isLeapYear(int y)
     {
         return (y % 4 == 0) && (y % 100 != 0 || y % 400 == 0);
+    }
+    
+    int countLeapYears(int y)
+    {
+        return floor(y/4) - floor(y/100) + floor(y/400);
     }
 };
