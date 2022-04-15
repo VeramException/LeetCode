@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-    vector<int> daysOfMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};    
+    vector<int> daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};    
     vector<string> daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     
     string dayOfTheWeek(int day, int month, int year)
@@ -13,7 +13,7 @@ class Solution
     int daysFromZero(int d, int m, int y)
     {       
         for (int i=0; i<m-1; i++)
-            d += daysOfMonth[i];
+            d += daysInMonth[i];
         
         if (m>2 && isLeapYear(y))
             d++;
