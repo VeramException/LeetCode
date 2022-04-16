@@ -3,11 +3,11 @@
 class Solution
 {
     public:
-    vector<int> parent;
-    vector<int> rank;
-    
+    vector<int> parent;   // {0, 1, 2, 3, 4, 5, ....... n}
+    vector<int> rank;     // {1, 1, 1, 1, 1, 1, ........1}
     int countComponents(int n, vector<vector<int>>& edges)
-    {        
+    {   
+        // Initialize parent & rank.
         for (int i=0; i<n; i++)
         {
             parent.push_back(i);
@@ -24,7 +24,10 @@ class Solution
     {
         int res = x;
         while (res != parent[res])
+        {
+            parent[res] = parent[parent[res]];
             res = parent[res];
+        }
         return res;
     }
     
