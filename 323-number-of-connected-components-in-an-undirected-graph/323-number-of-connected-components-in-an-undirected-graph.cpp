@@ -25,7 +25,7 @@ class Solution
         int res = x;
         while (res != parent[res])
         {
-            parent[res] = parent[parent[res]];
+            parent[res] = parent[parent[res]];   // Optimization: compression
             res = parent[res];
         }
         return res;
