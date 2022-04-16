@@ -33,18 +33,18 @@ class Solution
     
     int unions(int x1, int x2)
     {
-        int p1 = find(x1);
-        int p2 = find(x2);
+        int p1 = find(x1);        // find the top-most parent of x1
+        int p2 = find(x2);        // find the top-most parent of x2
         
-        if (p1 == p2)
+        if (p1 == p2)             // if both have same parent, nothing needs to be done.
             return 0;
         
-        if (rank[p2] > rank[p1])
+        if (rank[p2] > rank[p1])  // if p2 have more children than p1, add p1 as child to p2 (to not increase tree height)
         {
             parent[p1] = p2;
-            rank[p2] += rank[p1];
+            rank[p2] += rank[p1]; 
         }
-        else
+        else                      // else, do the oppposite
         {
             parent[p2] = p1;
             rank[p1] += rank[p2];
