@@ -31,7 +31,7 @@ class Solution
             else
             {
                 if ((n1+n2)% 2 == 0) // even
-                    return (max(l1,l2)+min(r1,r2))/2.0;
+                    return (max(l1,l2)+min(r1,r2))/2.0;  // notice 2.0 (to get double)
                 else
                     return min(r1,r2);
             }
