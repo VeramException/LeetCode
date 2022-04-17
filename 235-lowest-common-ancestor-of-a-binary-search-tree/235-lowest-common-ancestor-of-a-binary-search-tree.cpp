@@ -23,8 +23,7 @@ class Solution
         if ((root->val < p->val) && (root->val < q->val))
             return lowestCommonAncestor(root->right, p, q);
 
-        // At this point, either p < val < q (or) val == p (or) val == q. 
-        // In all these cases, root is the LCA.
+        // At this point, p < val < q
         return root;
     }
 };
