@@ -2,14 +2,14 @@
 class Solution
 {
     public:
-    TreeNode* increasingBST(TreeNode* root, TreeNode* tail = NULL)
+    TreeNode* increasingBST(TreeNode* root, TreeNode* next = NULL)
     {
         if (!root)
-            return tail;
+            return next;
         
         TreeNode* res = increasingBST(root->left, root);
         root->left = NULL;
-        root->right = increasingBST(root->right, tail);
+        root->right = increasingBST(root->right, next);
         return res;
     }
 };
