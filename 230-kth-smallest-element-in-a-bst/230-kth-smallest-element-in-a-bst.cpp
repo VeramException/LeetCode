@@ -13,14 +13,12 @@ class Solution
         if (node == nullptr)
             return;
         
-        inOrder(node->left, k, res);
-               
+        inOrder(node->left, k, res);               
         if (--k == 0)
         {
             res = node->val;
             return;
-        }
-        
+        }        
         inOrder(node->right, k, res);
     }
 };
