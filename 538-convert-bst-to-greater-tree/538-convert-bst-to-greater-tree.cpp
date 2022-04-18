@@ -10,7 +10,8 @@ class Solution
     
     int convertBSTUtil(TreeNode* node, int& sum)
     {
-        if (node == nullptr)return sum;
+        if (node == nullptr)
+            return sum;
      
         node->val += convertBSTUtil(node->right, sum);
         
