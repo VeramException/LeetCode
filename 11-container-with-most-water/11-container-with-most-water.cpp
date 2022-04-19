@@ -7,17 +7,16 @@ class Solution
         int r = height.size()-1;
         
         int maxArea = 0;
-        while (l<r)
+        while (l < r)
         {
-            int area = (r-l) * min(height[l], height[r]);
-            maxArea = max(maxArea, area);
+            int area = (r-l)*min(height[l], height[r]);
+            maxArea = max (maxArea, area);
             
             if (height[l] < height[r])
                 l++;
             else
                 r--;
         }
-        
         return maxArea;
     }
 };
