@@ -2,8 +2,7 @@ class Solution
 {
     private:
     TreeNode* first = nullptr;
-    TreeNode* second = nullptr;
-    
+    TreeNode* second = nullptr;    
     TreeNode* prev = new TreeNode(INT_MIN);
     
     public:
@@ -16,19 +15,17 @@ class Solution
     // Inorder traversal
     void recoverTreeUtil(TreeNode* node)
     {
-        if (node == nullptr)
-            return;
+        if (node == nullptr) return;
         
         recoverTreeUtil(node->left);
         
-        if (first == nullptr && prev->val > node->val)
-            first = prev;
-        
-        if (first != nullptr && prev->val > node->val)
-            second = node;
+        if (first == nullptr && prev->val > node->val) first = prev;
+        if (first != nullptr && prev->val > node->val) second = node;
         
         prev = node;
         
         recoverTreeUtil(node->right);
     }
 };
+
+
