@@ -3,27 +3,15 @@ class Solution
     public:
     long long subArrayRanges(vector<int>& nums)
     {
-        int N = nums.size();
-        
-        vector<long long> minVals(N);
-        vector<long long> maxVals(N);
-        
-        sumSubarrayMins(nums, minVals);
-        sumSubarrayMaxs(nums, maxVals);
-        
-        long long sum = 0;
-        for (int i=0; i<N; i++)
-            sum = sum + (maxVals[i]-minVals[i])*nums[i];
-
-        return sum;
+        return sumSubarrayMaxs(nums) - sumSubarrayMins(nums);;
     }
        
-    void sumSubarrayMins(vector<int>& nums, vector<long long>& minVals)
+    long long sumSubarrayMins(vector<int>& nums)
     {
         int N = nums.size();
         
-        vector<int> left(N);    // to hold the next smaller element on the left
-        vector<int> right(N);   // to hold the next smaller element on the right
+        vector<long long> left(N);    // to hold the next smaller element on the left
+        vector<long long> right(N);   // to hold the next smaller element on the right
         
         // Left
         stack<int> s;   // Monotonic Stack --> store the latest smallest
@@ -59,16 +47,18 @@ class Solution
             st.push(i);
         }
         
+        long long sum = 0;
         for (int i=0; i<N; i++)
-            minVals[i] = (left[i] * right[i]);
+            sum += nums[i] * (left[i] * right[i]);
+        return sum;
     }
     
-    void sumSubarrayMaxs(vector<int>& nums, vector<long long>& maxVals)
+    long long sumSubarrayMaxs(vector<int>& nums)
     {
         int N = nums.size();
         
-        vector<int> left(N);    // to hold the next larger element on the left
-        vector<int> right(N);   // to hold the next larger element on the right
+        vector<long long> left(N);    // to hold the next larger element on the left
+        vector<long long> right(N);   // to hold the next larger element on the right
         
         // Left
         stack<int> s;   // Monotonic Stack --> store the latest largest
@@ -104,7 +94,9 @@ class Solution
             st.push(i);
         }
         
+        long long sum = 0;
         for (int i=0; i<N; i++)
-            maxVals[i] = (left[i] * right[i]);
+            sum += nums[i] * (left[i] * right[i]);
+        return sum;
     }
 };
