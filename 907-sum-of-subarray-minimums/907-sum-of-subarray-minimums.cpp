@@ -26,6 +26,8 @@ class Solution
         }
        
         // Optimization: Here we can possibly clear the old stack and re-use it.
+        // We can also write this for clearing the stack.
+        // st=stack<int>();
         
         // Right
         stack<int> st;   // Monotonic Stack --> store the latest smallest
