@@ -3,7 +3,7 @@ class Solution
     public:
     unordered_map<int, vector<int>> adjList;
     unordered_set<int> completed;
-    unordered_set<int> cycle;
+    unordered_set<int> currentPath;
     vector<int> res;
     
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites)
@@ -28,23 +28,22 @@ class Solution
         if (completed.count(course) > 0)
             return true;
         
-        if (cycle.count(course) > 0)
+        // we already found this in current path - i.e., a cycle is formed
+        if (currentPath.count(course) > 0)
             return false;
         
-
-        
-        cycle.insert(course);
+        currentPath.insert(course);
         
         for (int p: adjList[course])
             if (dfs(p) == false)
                 return false;
         
-        // remove this course from cycle
-        cycle.erase(cycle.find(course));
-        
-        completed.insert(course);
+        // remove this course from current path
+        currentPath.erase(currentPath.find(course));
         
         res.push_back(course);
+        completed.insert(course);
+        
         return true;
     }
 };
