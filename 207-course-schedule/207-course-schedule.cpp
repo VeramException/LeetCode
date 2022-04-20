@@ -19,6 +19,7 @@ class Solution
     
     bool dfs(int course)
     {
+        // This part is important
         if (adjList[course].size() == 0)
             return true;
             
@@ -31,6 +32,7 @@ class Solution
             if(dfs(c) == false)
                 return false;
         
+        // This part is important
         adjList[course] = {};
         
         return true;
