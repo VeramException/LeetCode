@@ -2,7 +2,7 @@ class Solution
 {
     public:
     unordered_map<int, vector<int>> adjList;
-    unordered_set<int> visited;
+    unordered_set<int> completed;
     unordered_set<int> cycle;
     vector<int> res;
     
@@ -25,12 +25,13 @@ class Solution
     
     bool dfs(int course)
     {
+        if (completed.count(course) > 0)
+            return true;
+        
         if (cycle.count(course) > 0)
             return false;
         
-        // we can return from here, we can go through this again
-        if (visited.count(course) > 0)
-            return true;
+
         
         cycle.insert(course);
         
@@ -41,7 +42,7 @@ class Solution
         // remove this course from cycle
         cycle.erase(cycle.find(course));
         
-        visited.insert(course);
+        completed.insert(course);
         
         res.push_back(course);
         return true;
