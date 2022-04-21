@@ -1,4 +1,4 @@
-// Count the contribution of each character.
+// Count in how many combinations does each character acts as a unique string.
 // (left+1)*(right+1) = number of combinations.
 
 class Solution
