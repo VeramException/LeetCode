@@ -8,7 +8,7 @@ class MyHashSet
     
     MyHashSet()
     {
-        map.resize(10000000, false);
+        map.resize(1000001, false);
     }
     
     void add(int key)
