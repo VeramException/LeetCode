@@ -6,9 +6,9 @@ class LRUCache
     list<pair<int, int>> li;
     unordered_map<int, list<pair<int, int>>::iterator> m;
     
-    LRUCache(int capacity) : cache_size(capacity) 
+    LRUCache(int capacity)
     {
-        
+        cache_size = capacity;
     }
     
     int get(int key)
