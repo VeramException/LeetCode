@@ -7,7 +7,7 @@ class Solution
         for (string word: words)
         {
             string t = word;
-            sort(t.begin(), t.end());
+            sort(t.begin(), t.end());  // this can be improved from O(nLog(n)) to O(1) using counting sort
             m[t].push_back(word);
         }
         
