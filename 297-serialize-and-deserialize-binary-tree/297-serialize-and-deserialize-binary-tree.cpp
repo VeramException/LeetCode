@@ -1,7 +1,7 @@
 class Codec
 {
     public:
-    string DELIMITER = ",";
+    char DELIMITER = ',';
     
     // Encodes a tree to a single string.
     string serialize(TreeNode* root)
@@ -14,25 +14,21 @@ class Codec
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string data)
     {
-        return deserializeUtil(data);
+        stringstream ss(data);
+        return deserializeUtil(ss);
     }
     
-    TreeNode* deserializeUtil(string& data)
+    TreeNode* deserializeUtil(stringstream& dataStream)
     {
-        if (data[0] == '#')
-        {
-            if (data.size() > 1)
-                data = data.substr(2);
+        string str;
+        getline(dataStream, str, DELIMITER);
+        
+        if (str == "#")
             return nullptr;
-        }
         
-        int pos = data.find(DELIMITER);
-        int val = stoi(data.substr(0, pos));
-        data = data.substr(pos+1);
-        
-        TreeNode* node = new TreeNode(val);
-        node->left  = deserializeUtil(data);
-        node->right = deserializeUtil(data);
+        TreeNode* node = new TreeNode(stoi(str));
+        node->left  = deserializeUtil(dataStream);
+        node->right = deserializeUtil(dataStream);
         return node;
     }
 };
