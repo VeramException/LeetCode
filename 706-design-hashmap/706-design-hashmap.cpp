@@ -3,10 +3,7 @@ class MyHashMap
     public:
     vector<int> m;
     
-    MyHashMap()
-    {
-        m.resize(1000001, -1);
-    }
+    MyHashMap() : m(1000001, -1) { }
     
     void put(int key, int value)
     {
