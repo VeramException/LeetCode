@@ -14,8 +14,7 @@ class Solution
         int j = 0;
         while (i < s.size())
         {
-            if (j < p.size() && 
-                (s[i] == p[j] || p[j] == '?'))
+            if (j < p.size() && (s[i] == p[j] || p[j] == '?'))
             {
                 i++;
                 j++;
