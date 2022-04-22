@@ -20,13 +20,13 @@ class Codec
     
     TreeNode* deserializeUtil(stringstream& dataStream)
     {
-        string str;
-        getline(dataStream, str, DELIMITER);
+        string val;
+        getline(dataStream, val, DELIMITER);   // if dataStream = "12,45", after this call, val = "12" and dataStream = "45"
         
-        if (str == "#")
+        if (val == "#")
             return nullptr;
         
-        TreeNode* node = new TreeNode(stoi(str));
+        TreeNode* node = new TreeNode(stoi(val));
         node->left  = deserializeUtil(dataStream);
         node->right = deserializeUtil(dataStream);
         return node;
