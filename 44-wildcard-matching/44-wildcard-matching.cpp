@@ -35,6 +35,7 @@ class Solution
                 return false;
         }
         
+        // if there are any *s at the end of pattern, skip them.
         while (j < p.size() && p[j] == '*') j++;
         
         return (j == p.size());
