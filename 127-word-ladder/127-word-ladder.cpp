@@ -44,7 +44,7 @@ public:
         unordered_set<string> visited;
 
         // initialize the queue with beginWord.
-        q.push(make_pair(beginWord, 1));
+        q.push({beginWord, 1});
         visited.insert(beginWord);
 
         while (!q.empty())
@@ -73,7 +73,7 @@ public:
                         if (vect[j] == endWord)
                             return distance+1;
                         
-                        q.push(make_pair(vect[j], distance+1));
+                        q.push({vect[j], distance+1});
                     }
                 }
             }
