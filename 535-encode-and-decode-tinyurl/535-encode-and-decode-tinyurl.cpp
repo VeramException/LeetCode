@@ -8,20 +8,16 @@ class Solution
     string encode(string longUrl)
     {  
         if (l_to_s.count(longUrl))
-            return "http://tinyurl/" + l_to_s[longUrl];
+            return l_to_s[longUrl];
         
-        // generate a hash until we find a non-colliding value.
         string encodedHash = generateEncodedHash();        
-        while(s_to_l.find(encodedHash) != s_to_l.end())
-        {
+        while(s_to_l.count(encodedHash))
             encodedHash = generateEncodedHash();
-        }
         
-        string shortUrl = "http://tinyurl/" + encodedHash;
-        s_to_l[shortUrl] = longUrl;
+        s_to_l[encodedHash] = longUrl;
         l_to_s[longUrl] = encodedHash;
         
-        return shortUrl;
+        return encodedHash;
     }
 
     // Decodes a shortened URL to its original URL.
@@ -48,5 +44,4 @@ class Solution
         
         return result;
     }
-    
 };
