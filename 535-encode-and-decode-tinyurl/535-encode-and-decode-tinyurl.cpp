@@ -11,10 +11,10 @@ class Solution
             return "http://tinyurl/" + l_to_s[longUrl];
         
         // generate a hash until we find a non-colliding value.
-        string encodedHash = generateEncodedHash(longUrl);        
+        string encodedHash = generateEncodedHash();        
         while(s_to_l.find(encodedHash) != s_to_l.end())
         {
-            encodedHash = generateEncodedHash(longUrl);
+            encodedHash = generateEncodedHash();
         }
         
         string shortUrl = "http://tinyurl/" + encodedHash;
@@ -31,7 +31,7 @@ class Solution
     }
     
     private:
-    string generateEncodedHash(string s)
+    string generateEncodedHash()
     {
         char charset[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
