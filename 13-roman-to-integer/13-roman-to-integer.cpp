@@ -3,27 +3,13 @@ class Solution
     public:
     int romanToInt(string s)
     {
-        unordered_map<char, int> m1;
-        m1['I'] = 1;
-        m1['V'] = 5;
-        m1['X'] = 10;
-        m1['L'] = 50;
-        m1['C'] = 100;
-        m1['D'] = 500;
-        m1['M'] = 1000;
+        unordered_map<char, int> m1 = {{'I',1},{'V',5},{'X',10},{'L',50},{'C',100},{'D',500},{'M',1000}};        
+        unordered_map<string, int> m2 = {{"IV",4},{"IX",9},{"XL",40},{"XC",90},{"CD",400},{"CM",900}};
         
-        unordered_map<string, int> m2;
-        m2["IV"] = 4;
-        m2["IX"] = 9;
-        m2["XL"] = 40;
-        m2["XC"] = 90;
-        m2["CD"] = 400;
-        m2["CM"] = 900;
-        
-        int res = 0, i=0;
+        int i=0, res=0;
         while (i < s.size())
         {
-            if (i <= s.size()-2 && m2.count(s.substr(i,2)))
+            if (i+1 < s.size() && m2.count(s.substr(i,2)))
             {
                 res += m2[s.substr(i,2)];
                 i = i+2;
