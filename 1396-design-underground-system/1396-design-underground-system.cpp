@@ -3,10 +3,10 @@ class UndergroundSystem
     public:
     
     // [start-station][end-station] =  {sum, totalTrips}
-    unordered_map<string, unordered_map<string,pair<int, int>>> tripStatistics; 
+    unordered_map<string, unordered_map<string, pair<int,int>>> tripStatistics; 
     
     // [id] = {start-station, start-time}
-    unordered_map<int, pair<string, int>> activeTrips;   
+    unordered_map<int, pair<string,int>> activeTrips;   
         
     UndergroundSystem() { }
     
