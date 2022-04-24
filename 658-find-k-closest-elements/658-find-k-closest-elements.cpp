@@ -39,16 +39,15 @@ class Solution
     vector<int> findClosestElements(vector<int>& nums, int k, int x)
     {
          int lo = 0;
-         int hi = nums.size()-k;
+         int hi = nums.size()-1;
          
-         while (lo < hi)
+         while (hi-lo >= k)
          {
-             int mid = (lo + hi) / 2;
-             
-             if (x - nums[mid] > nums[mid + k] - x)
-                 lo = mid + 1;
+             if (abs(nums[lo] - x) > abs(nums[hi] - x))
+                 lo++;
              else
-                 hi = mid;
+                 hi--;
+                 
          }
          return vector<int>(nums.begin() + lo, nums.begin() + lo + k);
     }
