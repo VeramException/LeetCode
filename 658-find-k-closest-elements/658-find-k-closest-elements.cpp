@@ -1,3 +1,5 @@
+// The following solution is when the array is unsorted.
+/*
 class Solution
 {
     public:
@@ -27,3 +29,28 @@ class Solution
         return vector<int>(s.begin(), s.end());
     }
 };
+*/
+
+// When solution is sorted, we can find the closest element by binary search
+class Solution
+{
+    public:
+    
+    vector<int> findClosestElements(vector<int>& nums, int k, int x)
+    {
+         int lo = 0;
+         int hi = nums.size()-k;
+         
+         while (lo < hi)
+         {
+             int mid = (lo + hi) / 2;
+             
+             if (x - nums[mid] > nums[mid + k] - x)
+                 lo = mid + 1;
+             else
+                 hi = mid;
+         }
+         return vector<int>(nums.begin() + lo, nums.begin() + lo + k);
+    }
+};
+
