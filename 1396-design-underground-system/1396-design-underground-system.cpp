@@ -1,4 +1,3 @@
-
 class UndergroundSystem
 {
     public:
@@ -6,7 +5,7 @@ class UndergroundSystem
     // <start-station, end-station, <sum, totalTrips>>
     unordered_map<string, unordered_map<string,pair<int, int>>> tripStatistics; 
     
-    // <id, <start-station, duration>>
+    // <id, <start-station, start-time>>
     unordered_map<int, pair<string, int>> activeTrips;   
         
     UndergroundSystem() { }
