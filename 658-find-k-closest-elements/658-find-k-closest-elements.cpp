@@ -31,7 +31,7 @@ class Solution
 };
 */
 
-// When solution is sorted, we can find the first closest element by binary search
+// When solution is sorted, we can find lower bound and upper bound and just return array[lo, lo+k]
 class Solution
 {
     public:
