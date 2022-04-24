@@ -2,23 +2,22 @@ class UndergroundSystem
 {
     public:
     
-    // <start-station, end-station, <sum, totalTrips>>
+    // [start-station][end-station] =  {sum, totalTrips}
     unordered_map<string, unordered_map<string,pair<int, int>>> tripStatistics; 
     
-    // <id, <start-station, start-time>>
+    // [id] = {start-station, start-time}
     unordered_map<int, pair<string, int>> activeTrips;   
         
     UndergroundSystem() { }
     
-    void checkIn(int id, string startStation, int t)
+    void checkIn(int id, string startStation, int startTime)
     {
-        activeTrips[id].first = startStation;
-        activeTrips[id].second = t;
+        activeTrips[id] = {startStation, startTime};
     }
     
-    void checkOut(int id, string endStation, int t)
+    void checkOut(int id, string endStation, int endTime)
     {
-        int duration = t - activeTrips[id].second;
+        int duration = endTime - activeTrips[id].second;
         tripStatistics[activeTrips[id].first][endStation].first += duration;
         tripStatistics[activeTrips[id].first][endStation].second++;
         
