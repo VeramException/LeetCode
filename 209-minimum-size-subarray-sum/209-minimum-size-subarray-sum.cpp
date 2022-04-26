@@ -10,7 +10,7 @@ class Solution
         {
             sum += nums[r];
             
-            while (sum >= target && l <= r)
+            while (sum >= target)
             {
                 minLength = min (minLength, r-l+1);
                 sum = sum - nums[l];
