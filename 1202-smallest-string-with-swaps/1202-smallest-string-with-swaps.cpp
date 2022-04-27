@@ -1,35 +1,56 @@
-class Solution {
-public:
-    vector<int> indices;                                                 //Stores indices of same group.
-    vector<bool> visited;
-    vector<vector<int>> adjList;
-    string indiceString;                                                 //Stores  string formed by indices in the same group.
-    void dfs(string &s,int n)                                             //DFS to get all indices in same group.
-    {
-        visited[n]=true;
-        indices.push_back(n);
-        indiceString+=s[n];
-        for(int &i:adjList[n])
-            if(!visited[i])
-               dfs(s,i);
-    }
+class Solution
+{
+    private:
+    unordered_map<int, vector<int>> adjList;
+    unordered_set<int> visited;
+
+    vector<int> connectedIndices;
+    string connectedIndicesString;
+    
+    public:
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) 
-    {
-        adjList.resize(s.length());
-        visited.resize(s.length(),false);
-        for(vector<int> &v:pairs)                               //Create adjacency list using the indice pairs
-            adjList[v[0]].push_back(v[1]),adjList[v[1]].push_back(v[0]);
-        for(int i=0;i<s.length();i++)
-            if(!visited[i])
+    {        
+        for (vector<int> pair: pairs)
+        {
+            adjList[pair[0]].push_back(pair[1]);
+            adjList[pair[1]].push_back(pair[0]);
+        }
+        
+        for (int i=0; i<s.size(); i++)
+        {
+            if(!visited.count(i))
             {
-                indiceString="";                              //Clear string formed by one group of indices before finding next group.
-                indices.clear();                             //Clear indices vector before finding another group.
-                dfs(s,i);
-                sort(indiceString.begin(),indiceString.end());                    //Sort the characters in the same group.
-                sort(indices.begin(),indices.end());                                  //Sort the indices in the same group.            
-                for(int i=0;i<indices.size();i++)          //Replace all the indices in the same group with the sorted characters.
-                    s[indices[i]]=indiceString[i];
+                connectedIndicesString = "";
+                connectedIndices.clear();
+                
+                dfs(s, i);
+                
+                // Eg: "dcab", [[0,3],[1,2],[0,2]]  ==> adjList[0] = {3,2}
+                //                                      adjList[1] = {2}
+                //                                      adjList[2] = {1,0}
+                //                                      adjList[3] = {0}
+                
+                sort(connectedIndicesString.begin(), connectedIndicesString.end()); // dbac --> abcd
+                sort(connectedIndices.begin(), connectedIndices.end());             // 0,3,2,1 ---> 0,1,2,3
+                
+                for (int i=0; i<connectedIndices.size(); i++)
+                    s[connectedIndices[i]] = connectedIndicesString[i];
             }
+        }
+        
         return s;
+    }
+    
+    void dfs(string& s, int i)
+    {
+        if (visited.count(i))
+            return;
+        
+        visited.insert(i);
+        connectedIndices.push_back(i);
+        connectedIndicesString += s[i];
+        
+        for (int j: adjList[i])
+            dfs(s, j);
     }
 };
