@@ -7,14 +7,14 @@ class Solution
         sort (sorted.begin(), sorted.end());
         
         int n = nums.size();
-        
-        for (int i=0, j=(n-1)/2, k=n-1; 
-                 i<n;
-                 i++)
+
+        int j = (n-1)/2;
+        int k = n-1;
+        for (int i=0; i<n; i++)
         {
-            if (i%2)
+            if (i%2)                      // Odd indices
                 nums[i] = sorted[k--];
-            else
+            else                          // Even indices
                 nums[i] = sorted[j--];
         }
     }
