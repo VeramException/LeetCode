@@ -14,37 +14,33 @@ class Solution
             return 0;
 
         vector<vector<int>> minEffort(rows, vector<int>(cols, INT_MAX));
-        
-        priority_queue<vector<int>, vector<vector<int>>, greater<vector<int>>> pq; // {distance}
-        pq.push({0, 0, 0});  // {effort, r, c}
         minEffort[0][0] = 0;
         
-        while (!pq.empty())
+        queue<vector<int>> q;
+        q.push({0, 0});        
+        
+        while (!q.empty())
         {
-            int d = pq.top()[0];
-            int r = pq.top()[1];
-            int c = pq.top()[2];
-            pq.pop();
+            int r = q.front()[0];
+            int c = q.front()[1];
+            q.pop();
             
             for (vector<int>& dir: directions)
             {
                 int rr = r + dir[0];
                 int cc = c + dir[1];
                 
-                //if(rr == rows-1 && cc == cols-1) 
-//                    return d;
-                
                 if (rr >= 0 && rr < rows && cc >= 0 && cc < cols)
                 {
                     int a = heights[r][c];
                     int b = heights[rr][cc];
                     
-                    int effort = max(d, abs(a - b));
+                    int effort = max(minEffort[r][c], abs(a - b));
                     
                     if (minEffort[rr][cc] > effort)  // better path
                     {
                         minEffort[rr][cc] = effort;
-                        pq.push({effort, rr, cc});
+                        q.push({rr, cc});
                     }
                 }
             }
