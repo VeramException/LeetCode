@@ -10,8 +10,8 @@ class Solution
         rows = heights.size();
         cols = heights[0].size();
         
-        if (rows == 1 && cols == 1)
-            return 0;
+        //if (rows == 1 && cols == 1)
+         //   return 0;
 
         vector<vector<int>> minEffort(rows, vector<int>(cols, INT_MAX));
         minEffort[0][0] = 0;
@@ -32,12 +32,15 @@ class Solution
                 
                 if (rr >= 0 && rr < rows && cc >= 0 && cc < cols)
                 {
-                    int a = heights[r][c];
-                    int b = heights[rr][cc];
+                    int a = heights[r][c];   // current cell
+                    int b = heights[rr][cc]; // next cell
                     
-                    int effort = max(minEffort[r][c], abs(a - b));
+                    int effort = max(minEffort[r][c], abs(a - b)); // maximum of
+                                                                   // effort needed to reach from [0,0 to current cell
+                                                                   // or
+                                                                   // effort needed to climb to next cell
                     
-                    if (minEffort[rr][cc] > effort)  // better path
+                    if (minEffort[rr][cc] > effort)  // we found better path (path that takes less effort)
                     {
                         minEffort[rr][cc] = effort;
                         q.push({rr, cc});
