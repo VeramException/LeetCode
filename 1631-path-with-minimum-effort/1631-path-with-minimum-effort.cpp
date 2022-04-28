@@ -9,9 +9,6 @@ class Solution
     {        
         rows = heights.size();
         cols = heights[0].size();
-        
-        //if (rows == 1 && cols == 1)
-         //   return 0;
 
         vector<vector<int>> minEffort(rows, vector<int>(cols, INT_MAX));
         minEffort[0][0] = 0;
