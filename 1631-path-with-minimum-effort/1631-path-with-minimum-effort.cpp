@@ -1,14 +1,12 @@
 class Solution
 {
     public:
-    
-    int rows, cols;
     vector<vector<int>> directions = {{1,0}, {-1,0}, {0,1}, {0,-1}};
     
     int minimumEffortPath(vector<vector<int>>& heights)
     {        
-        rows = heights.size();
-        cols = heights[0].size();
+        int rows = heights.size();
+        int cols = heights[0].size();
 
         vector<vector<int>> minEffort(rows, vector<int>(cols, INT_MAX));
         minEffort[0][0] = 0;
@@ -33,7 +31,7 @@ class Solution
                     int b = heights[rr][cc]; // next cell
                     
                     int effort = max(minEffort[r][c], abs(a - b)); // maximum of
-                                                                   // effort needed to reach from [0,0 to current cell
+                                                                   // effort needed to reach from [0,0] to current cell
                                                                    // or
                                                                    // effort needed to climb to next cell
                     
