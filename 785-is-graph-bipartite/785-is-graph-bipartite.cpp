@@ -5,9 +5,9 @@ class Solution
     
     bool isBipartite(vector<vector<int>>& graph)
     {
-        // 0 --> Not coded
-        // 1 --> group A
-        // 2 --> group B
+        //  0 --> Not coded
+        //  1 --> group A
+        // -1 --> group B
         colors.resize(graph.size(), 0);
         
         for (int i=0; i<graph.size(); i++)
