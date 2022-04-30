@@ -17,10 +17,10 @@ class Solution
         if (node == nullptr)
             return;
         
-        if (node->left == nullptr && node->right == nullptr)
-            leaves.push_back(node->val);
-        
         dfs(node->left, leaves);
         dfs(node->right, leaves);
+        
+        if (node->left == nullptr && node->right == nullptr)
+            leaves.push_back(node->val);
     }
 };
