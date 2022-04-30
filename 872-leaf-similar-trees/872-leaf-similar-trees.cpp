@@ -18,10 +18,9 @@ class Solution
             return;
         
         inorderTraverse(node->left, leaves);
+        inorderTraverse(node->right, leaves);
         
         if (node->left == nullptr && node->right == nullptr)
             leaves.push_back(node->val);
-        
-        inorderTraverse(node->right, leaves);
     }
 };
