@@ -1,57 +1,64 @@
-class Solution 
+class Solution
 {
     public:
-int shortestDistance(vector<vector<int>>& grid) {
-        int m = grid.size(); 
-        int n = grid[0].size();
-
-        int mindist = INT_MAX;
-        vector<vector<int>> distance(m, vector<int>(n,0));
+    int rows, cols;
+    vector<vector<int>> directions = {{1,0},{-1,0},{0,1},{0,-1}};
+    
+    int shortestDistance(vector<vector<int>>& grid)
+    {
+        rows = grid.size();
+        cols = grid[0].size();
         
+        vector<vector<int>> distance(rows, vector<int> (cols, 0));
+        
+        int minDist = INT_MAX;
         int target = 0;
         
-        vector<vector<int>> dir {{1,0},{0,1}, {-1,0},{0,-1}};
-        
-        for(int i = 0; i < m; i++)
+        for (int r=0; r<rows; r++)
         {
-            for(int j = 0; j < n; j++)
+            for (int c=0; c<cols; c++)
             {
-                if(grid[i][j] != 1) continue;
-                
-                mindist = INT_MAX;
-                queue<pair<int,int>> q;
-                q.emplace(i,j);
-                int level = 1;
-                while(!q.empty())
+                if (grid[r][c] == 1)
                 {
-                    int sz = q.size();
-                    for(int k = 0; k < sz; k++)
+                    // Find shortest distance of each '0' to this building (i.e., '1')
+                    int level = 1;
+                    minDist = INT_MAX;
+                    
+                    queue<pair<int, int>> q;
+                    q.push({r,c});
+                    
+                    while (!q.empty())
                     {
-                        auto curr = q.front();
-                        q.pop();
-                        for(auto &d : dir)
+                        int siz = q.size();
+                        while (siz-- > 0)
                         {
-                            int a = curr.first+d[0];
-                            int b = curr.second+d[1];
-                            
-                            if(a == m || b == n || a == -1 || b == -1) continue;
-                            
-                            if(grid[a][b] == target)
+                            auto curr = q.front(); q.pop();
+                            for (vector<int>& d: directions)
                             {
-                                q.emplace(a,b);
-                                grid[a][b]--;
-                                distance[a][b] += level;
-                                mindist = min(mindist, distance[a][b]);
+                                int rr = curr.first  + d[0];
+                                int cc = curr.second + d[1];
+                                
+                                if (!(rr >= 0 && cc >=0 && rr < rows && cc < cols))
+                                    continue;
+                                
+                                if (grid[rr][cc] == target)
+                                {
+                                    q.push({rr,cc});
+                                    grid[rr][cc]--;
+                                    distance[rr][cc] += level;
+                                    minDist = min(minDist, distance[rr][cc]);
+                                }
                             }
                         }
+                        level++;
                     }
-                    level++;
+                    // At this point, we might have marked all the visited 0's as -1.
+                    // So, for next iteration, we need to look for -1s
+                    target--;
                 }
-                target--;
             }
         }
         
-        return mindist == INT_MAX ? -1 : mindist;
-        
+        return (minDist == INT_MAX)? -1: minDist;
     }
 };
