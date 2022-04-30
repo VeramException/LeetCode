@@ -2,26 +2,33 @@ class Solution
 {
     public:
     
-    void rotateFrame(vector<vector<int>>& matrix, int startIndex)
+    void rotate(vector<vector<int> > &matrix)
     {
-        int i = startIndex;
-        int j = (matrix.size() - startIndex) - 1;
-        int n = matrix.size()-1;
-        while (i < j)
-        {
-            int temp = matrix[startIndex][i];
-            swap(temp, matrix[i][j]);
-            swap(temp, matrix[j][n-i]);
-            swap(temp, matrix[n-i][startIndex]);
-            swap(temp, matrix[startIndex][i]);
-            i++;
-        }
-    }
-    
-    void rotate(vector<vector<int>>& matrix)
-    {
-        for (int i = 0; i < (matrix.size() / 2); i++)
-            rotateFrame(matrix, i);
+        reverse(matrix.begin(), matrix.end());
+
+        int rows = matrix.size();
+        int cols = matrix[0].size();
+        
+        for (int r=0; r<rows; r++)
+            for (int c=r; c<cols; c++)
+                swap(matrix[r][c], matrix[c][r]);
     }
     
 };
+
+
+/*
+ * clockwise rotate
+ * first reverse up to down, then swap the symmetry 
+ * 1 2 3     7 8 9     7 4 1
+ * 4 5 6  => 4 5 6  => 8 5 2
+ * 7 8 9     1 2 3     9 6 3
+*/
+
+/*
+ * anticlockwise rotate
+ * first reverse left to right, then swap the symmetry
+ * 1 2 3     3 2 1     3 6 9
+ * 4 5 6  => 6 5 4  => 2 5 8
+ * 7 8 9     9 8 7     1 4 7
+*/
