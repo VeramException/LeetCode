@@ -18,21 +18,19 @@ class Solution
         return dfs(source, destination);
     }
     
-    bool dfs(int node, int destination)
+    bool dfs(int currNode, int destination)
     {
-        if (visited.count(node))
+        if (currNode == destination)
+            return true;
+        
+        if (visited.count(currNode))
             return false;
         
-        visited.insert(node);
+        visited.insert(currNode);
         
-        for (int n: adjList[node])
-        {
-            if (n == destination)
+        for (int neighbor: adjList[currNode])
+            if (dfs(neighbor, destination))
                 return true;
-            
-            if (dfs(n, destination))
-                return true;
-        }
         
         return false;
     }
