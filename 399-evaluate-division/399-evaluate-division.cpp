@@ -33,8 +33,7 @@ class Solution
         if (visited.count(a) == 1)
             return {false, -1.0};
             
-        if (visited.count(a) == 0)
-            visited.insert(a);
+        visited.insert(a);
         
         for (pair<string, double> node: adjList[a])
         {
