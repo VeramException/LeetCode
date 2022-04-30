@@ -12,15 +12,16 @@ class Solution
         vector<vector<int>> distance(rows, vector<int> (cols, 0));
         
         int minDist = INT_MAX;
-        int target = 0;
+        int target = 0;        // Instead of looking for '0', let's look for target.
+                               // For each building, we can mark them as target-1 to track visited
         
         for (int r=0; r<rows; r++)
         {
             for (int c=0; c<cols; c++)
             {
+                // Find shortest distance of each empty space to this building (i.e., '1')
                 if (grid[r][c] == 1)
-                {
-                    // Find shortest distance of each '0' to this building (i.e., '1')
+                {                    
                     int level = 1;
                     minDist = INT_MAX;
                     
