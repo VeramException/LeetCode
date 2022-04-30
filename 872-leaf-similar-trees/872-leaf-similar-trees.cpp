@@ -17,10 +17,12 @@ class Solution
         if (node == nullptr)
             return;
         
+        if (node->left == nullptr && node->right == nullptr)
+            leaves.push_back(node->val);
+        
         inorderTraverse(node->left, leaves);
         inorderTraverse(node->right, leaves);
         
-        if (node->left == nullptr && node->right == nullptr)
-            leaves.push_back(node->val);
+
     }
 };
