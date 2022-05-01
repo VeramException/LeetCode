@@ -41,3 +41,6 @@ public:
         return allCombs - currCombs;
     }
 };
+
+// Here is the faster DP solution - same as prefix sum
+// https://leetcode.com/problems/total-appeal-of-a-string/discuss/1996203/DP
