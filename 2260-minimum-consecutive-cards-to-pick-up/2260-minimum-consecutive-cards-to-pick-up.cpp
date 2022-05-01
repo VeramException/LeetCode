@@ -9,9 +9,8 @@ class Solution
         for (int i=0; i<cards.size(); i++)
         {
             if (m.count(cards[i]))
-            {
                 res = min(res, i-m[cards[i]]+1);
-            }
+
             m[cards[i]] = i;
         }
         
