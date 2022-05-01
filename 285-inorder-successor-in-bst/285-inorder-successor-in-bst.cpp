@@ -1,34 +1,24 @@
 class Solution
 {
     public:
-    TreeNode* prev = nullptr;
-    TreeNode* res = nullptr;
-    
     TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p)
     {
-        inOrder(root, p);
-        return res;
-    }
-    
-    void inOrder(TreeNode* node, TreeNode* p)
-    {
-        if (node == nullptr)
-            return;
+        if (root == nullptr || p == nullptr)
+            return nullptr;
         
-        inOrder(node->left, p);
+        TreeNode* res = nullptr;
         
-        if (res != nullptr)
-            return;
-        
-        if (prev && prev->val == p->val)
+        while (root != nullptr)
         {
-            res = node;
-            return;
+            if (root->val <= p->val)
+                root = root->right;
+            else
+            {
+                res = root;
+                root = root->left;
+            }
         }
-        prev = node;
         
-        if (res != nullptr)
-            return;
-        inOrder(node->right, p);
+        return res;
     }
 };
