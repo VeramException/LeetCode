@@ -8,7 +8,6 @@ class Solution
         bool good = true;
         for (int i=0; good && i<words[0].size(); i++)
         {
-            good = true;
             char c = words[0][i];                
             for (string& word: words)
             {
