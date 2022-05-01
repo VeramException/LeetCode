@@ -17,10 +17,8 @@ class Solution
                     break;
                 }
             }
-            if (good)
+            if (good == true)
                 res += c;
-            else
-                break;
         }
         
         return res;
