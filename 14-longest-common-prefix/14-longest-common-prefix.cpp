@@ -11,7 +11,8 @@ class Solution
                 if (i >= words[j].size() || words[j][i] != words[0][i])
                     noMismatch = false;
 
-            if (noMismatch) res += words[0][i];
+            if (noMismatch)
+                res += words[0][i];
         }
         return res;
     }
