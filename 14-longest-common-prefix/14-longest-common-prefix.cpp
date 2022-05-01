@@ -5,19 +5,19 @@ class Solution
     {
         string res;
         
-        bool good = true;
-        for (int i=0; good && i<words[0].size(); i++)
+        bool noMismatch = true;
+        for (int i=0; i<words[0].size() & noMismatch; i++)
         {
             char c = words[0][i];                
             for (string& word: words)
             {
                 if (i >= word.size() || word[i] != c)
                 {
-                    good = false;
+                    noMismatch = false;
                     break;
                 }
             }
-            if (good == true)
+            if (noMismatch)
                 res += c;
         }
         
