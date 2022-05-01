@@ -7,12 +7,11 @@ class Solution
         bool noMismatch = true;
         for (int i=0; i<words[0].size() & noMismatch; i++)
         {
-            char c = words[0][i];                
             for (int j=0; j<words.size() && noMismatch; j++)
-                if (i >= words[j].size() || words[j][i] != c)
+                if (i >= words[j].size() || words[j][i] != words[0][i])
                     noMismatch = false;
 
-            if (noMismatch) res += c;
+            if (noMismatch) res += words[0][i];
         }
         return res;
     }
