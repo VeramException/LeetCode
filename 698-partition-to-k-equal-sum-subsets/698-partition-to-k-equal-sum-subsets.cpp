@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-    unordered_map<int, unordered_map<int, int>> cache;
+    unordered_map<int, unordered_map<int, int>> cache; // [start_index, visited, true/false]
     
     bool canPartitionKSubsets(vector<int>& nums, int k)
     {        
