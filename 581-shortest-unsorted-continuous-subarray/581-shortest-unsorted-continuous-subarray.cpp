@@ -36,7 +36,7 @@ class Solution
         //      Now just go through the loop and find the first value that is larger  than min_val, and
         //                                            the last  value that is smaller than max_val
         
-        // Loop-3: Go through the loop and find where
+
         int l, r;
         for (l = 0; l < nums.size(); l++)
             if (nums[l] > minVal)
