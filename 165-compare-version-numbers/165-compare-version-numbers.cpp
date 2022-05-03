@@ -26,28 +26,13 @@ class Solution
         stringstream v1(version1);
         stringstream v2(version2);
         
-        // RMJ
-        int isV1Greater = compare(v1, v2);
-        if (isV1Greater == 1 || isV1Greater == -1)
-            return isV1Greater;
-
-        // RMN
-        isV1Greater = compare(v1, v2);
-        if (isV1Greater == 1 || isV1Greater == -1)
-            return isV1Greater;
-             
-        // MJ
-        string c1, c2;
-        getline(v1, c1, '.');
-        getline(v2, c2, '.');
-        
-        int c1_i = (c1 == "")? 0: stoi(c1);
-        int c2_i = (c2 == "")? 0: stoi(c2);
-        
-        if (c1_i < c2_i)
-            return -1;
-        else if (c1_i > c2_i)
-            return 1;
+        int i = 3;
+        while (i-- > 0)
+        {
+            int isV1Greater = compare(v1, v2);
+            if (isV1Greater == 1 || isV1Greater == -1)
+                return isV1Greater;
+        }
         
         // MN
         string d1, d2;
