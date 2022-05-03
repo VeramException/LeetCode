@@ -32,17 +32,9 @@ class Solution
             return isV1Greater;
 
         // RMN
-        string b1, b2;
-        getline(v1, b1, '.');
-        getline(v2, b2, '.');
-        
-        int b1_i = (b1 == "")? 0: stoi(b1);
-        int b2_i = (b2 == "")? 0: stoi(b2);
-        
-        if (b1_i < b2_i)
-            return -1;
-        else if (b1_i > b2_i)
-            return 1;
+        isV1Greater = compare(v1, v2);
+        if (isV1Greater == 1 || isV1Greater == -1)
+            return isV1Greater;
              
         // MJ
         string c1, c2;
