@@ -59,9 +59,7 @@ class Solution
             return -1;
         else if (d1_i > d2_i)
             return 1;
-        else
-            return 0;
-        
+         
         return 0;
     }
 };
