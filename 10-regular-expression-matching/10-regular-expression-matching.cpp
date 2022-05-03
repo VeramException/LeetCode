@@ -33,7 +33,9 @@ public:
         
         if ((j + 1) < p.size() && p[j+1] == '*')
         {
-            cache[i][j] = dfs(i, j+2) || (match && dfs(i+1, j));
+            cache[i][j] = dfs(i, j+2) ||          // Don't consider the <char>* which means we took "0" matching elements in 's'
+                          (match && dfs(i+1, j)); // We considered 1 match for now for <char>*, but for this there should be a match in 's'
+            
             return cache[i][j];;
         }
         
