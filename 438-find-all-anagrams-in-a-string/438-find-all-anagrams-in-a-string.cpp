@@ -1,4 +1,4 @@
-#define NO_OF_CHARS 256
+#define NO_OF_CHARS 128
 
 class Solution
 {
