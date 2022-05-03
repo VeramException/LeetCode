@@ -19,31 +19,21 @@ public:
     
     bool dfs(int i, int j)
     {
-        if (cache.count(i) && cache[i].count(j))
-            return cache[i][j];
-        
         if (i >= s.size() && j >= p.size())
             return true;
         
         if (j >= p.size())
             return false;
         
-        bool match = (i < s.size() && j < p.size() && 
-                     (s[i] == p[j] || p[j] == '.'));
+        bool match = (i < s.size() && j < p.size() &&  (s[i] == p[j] || p[j] == '.'));
         
-        if ((j + 1) < p.size() && p[j+1] == '*')
+        if (j+1 < p.size() && p[j+1] == '*')
         {
-            cache[i][j] = dfs(i, j+2) ||          // Don't consider the <char>* which means we took "0" matching elements in 's'
-                          (match && dfs(i+1, j)); // We considered 1 match for now for <char>*, but for this there should be a match in 's'
-            
-            return cache[i][j];;
+            return dfs (i, j+2) || (match && dfs (i+1, j));
         }
         
         if (match)
-        {
-            cache[i][j] = dfs(i+1, j+1);
-            return cache[i][j];
-        }
+            return dfs (i+1, j+1);
         
         return false;
     }
