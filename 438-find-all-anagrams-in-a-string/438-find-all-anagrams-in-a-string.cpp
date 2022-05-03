@@ -1,5 +1,3 @@
-#define NO_OF_CHARS 128
-
 class Solution
 {
     public:
@@ -11,8 +9,8 @@ class Solution
         
         vector<int> res;
         
-        int countPattern[256]       = {0};
-        int countCurrentWindow[256] = {0};
+        int countPattern[128]       = {0};
+        int countCurrentWindow[128] = {0};
         
         for (int i = 0; i < pattern.size(); i++)
         {
@@ -38,7 +36,7 @@ class Solution
     
     bool isSame(int a[], int b[])
     {
-        for (int i=0; i<256; i++)
+        for (int i=0; i<128; i++)
             if (a[i] != b[i])
                 return false;
         return true;
