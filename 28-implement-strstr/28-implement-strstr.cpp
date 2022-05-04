@@ -29,7 +29,7 @@ vector<int> BuildLpsArray(string s)
 			else
 			{
 				len = 0;
-				lps.push_back(len);
+				lps.push_back(0);
 				i++;
 			}
 		}
