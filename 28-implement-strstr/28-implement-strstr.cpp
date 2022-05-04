@@ -72,11 +72,6 @@ int Strstr(string s1, string s2, vector<int> lps)
     
 int strStr(string s1, string s2)
 {
-    if (s2 == "")
-        return 0;
-    else if (s1 == "")
-        return -1;
-        
     vector<int> LpsArray = BuildLpsArray(s2);
     return Strstr(s1, s2, LpsArray);
 }
