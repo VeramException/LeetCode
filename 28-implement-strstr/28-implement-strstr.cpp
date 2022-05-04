@@ -42,14 +42,8 @@ int Strstr(string s1, string s2, vector<int> lps)
 	int i = 0;
 	int j = 0;
     
-	while (i <= s1.size())
+	while (i < s1.size())
 	{
-		if (j == s2.size())
-		{
-			// Found a match
-			return (i - s2.size());
-		}
-
 		if (s1[i] == s2[j])
 		{
 			i++;
@@ -58,14 +52,13 @@ int Strstr(string s1, string s2, vector<int> lps)
 		else
 		{
 			if (j != 0)
-			{
 				j = lps[j - 1];
-			}
 			else
-			{
 				i++;
-			}
 		}
+        
+        if (j == s2.size())  // Found a match
+			return (i - s2.size());
 	}
     return -1;
 }
