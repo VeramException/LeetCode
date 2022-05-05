@@ -11,7 +11,7 @@ class MyStack
     void push(int x)
     {
         q.push(x);
-        for (int i=1; i<q.size(); i++)
+        for (int i=0; i<q.size()-1; i++)
             q.push(pop());
     }
     
