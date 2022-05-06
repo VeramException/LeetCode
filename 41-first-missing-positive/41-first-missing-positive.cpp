@@ -9,13 +9,13 @@ class Solution
         nums.push_back(0);
         nums.push_back(0);
 
-        // Step-1: Mark all negative numbers as '0'
+        // Step-1: Mark all negative numbers as '0'. They are useless.
         for (int i=0; i<nums.size(); i++)
             if (nums[i] < 0)
                 nums[i] = 0;
-
         
-        // Step-2: For non-INT_MIN values, mark their indices as INT_MIN
+        // Step-2: If you see a value in the array, mark that index as -ve.
+        //         In this way we can keep track of what values did we see.
         for(int i=0; i<nums.size(); i++)
         {
             int index = abs(nums[i]);
