@@ -7,14 +7,13 @@ class Solution
         
         for (char c: s)
         {
-            if (!st.empty() && st.back().first == c)
+            if (st.empty() || st.back().first != c)
             {
-                st.back().second++;
-                if (st.back().second == k)
-                    st.pop_back();
-            }
-            else
                 st.push_back({c, 1});
+                    
+            }
+            else if (++st.back().second == k)
+                st.pop_back();                
         }
         
         string res;
