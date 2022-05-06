@@ -3,7 +3,7 @@ class Solution
     public:
     int firstMissingPositive(vector<int>& nums)
     {
-        // Step-0: Push two more dummy values
+        // Step-0: Push two more dummy values so that we can accomodate '0' and '1' incase all are negative values
         nums.push_back(0);
         nums.push_back(0);        
         
