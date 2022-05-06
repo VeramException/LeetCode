@@ -1,7 +1,7 @@
 class Solution
 {
     public:
-    int cache[302][302];
+    int cache[301][301];
     
     int maxCoins(vector<int>& nums)
     {
