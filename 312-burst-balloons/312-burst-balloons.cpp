@@ -3,14 +3,15 @@
 class Solution
 {
     public:
-    int cache[301][301];
+    vector<vector<int>> cache;
     
     int maxCoins(vector<int>& nums)
-    { 
+    {
+        cache.resize(301, vector<int>(301, -1));
+        
         nums.insert(nums.begin(), 1);
         nums.insert(nums.end(), 1);
         int N = nums.size();
-        memset(cache, -1, sizeof(cache));
 
         return dfs(nums, 1, N-2);
     }
