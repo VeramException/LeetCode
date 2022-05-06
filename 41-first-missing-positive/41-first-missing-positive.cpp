@@ -1,20 +1,25 @@
-class Solution
+class Solution 
 {
     public:
-    int firstMissingPositive(vector<int>& nums)
+    
+    int firstMissingPositive(vector<int>& nums) 
     {
-        // Step-0: Push two more dummy values so that we can accomodate '0' and '1' incase all are negative values
+        // nums  = [0,1,2,3,4,5,  0,0]
+        // index = [0,1,2,3,4,5,  6,7]
         nums.push_back(0);
-        nums.push_back(0);        
+        nums.push_back(0);
+
+        // Step-1: Mark all negative numbers as '0'
+        for (int i=0; i<nums.size(); i++)
+        {
+            if (nums[i] < 0)
+            {
+                nums[i] = 0;
+                continue;
+            }
+        }
         
-        // Step-1: Mark all -ve numbers as '0'.
-        //         After this step, all numbers in the array are >= 0.
-        for (int& num: nums)
-            if (num < 0)
-                num = 0;
-        
-        // *** Core Step ***
-        // Step-2: 
+        // Step-2: For non-INT_MIN values, mark their indices as INT_MIN
         for(int i=0; i<nums.size(); i++)
         {
             if(nums[i] != INT_MIN && abs(nums[i]) < nums.size())
@@ -30,10 +35,13 @@ class Solution
         }
         
         // Step-3: The first 'index' which has a positive value is the answer.
-        for(int i=1; i<nums.size(); i++)
+        for (int i=1; i<nums.size();i++)
+        {
             if (nums[i] >= 0)
                 return i;
+        }
         
-        return 0;
+        // we may never reach here.
+        return 1;
     }
 };
