@@ -26,10 +26,12 @@ class Solution
         ListNode* head = nullptr;
         while (i >= 0 || j >= 0)
         {
-            int currSum = carry;
+            int currSum = carry
+                          + ((i >= 0)? (a[i] - '0'): 0)
+                          + ((j >= 0)? (b[j] - '0'): 0);
             
-            if (i >= 0) currSum += (a[i] - '0');
-            if (j >= 0) currSum += (b[j] - '0');
+            //if (i >= 0) currSum += (a[i] - '0');
+            //if (j >= 0) currSum += (b[j] - '0');
             
             carry   = currSum/10;
             currSum = currSum%10;
