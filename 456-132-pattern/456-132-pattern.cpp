@@ -11,7 +11,7 @@ class Solution
             if (nums[i] < second)
                 return true;
             
-            while (s.size() > 0 && nums[i] > s.top())
+            while (!s.empty() && nums[i] > s.top())
             {
                 second = s.top();
                 s.pop();
