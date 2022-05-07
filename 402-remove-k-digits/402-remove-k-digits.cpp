@@ -17,7 +17,7 @@ class Solution
                 res += c;
         }
         
-        while(res != "" && k--)        //   <-------this look is to make sure we fulfil the deletion condition
+        while(res != "" && k--)        // If there are any more 'k' left
             res.pop_back();
         
         return (res == "")? "0": res;
