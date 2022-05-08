@@ -4,14 +4,12 @@ class Solution
     vector<int> findDuplicates(vector<int>& nums)
     {
         vector<int> res;
-        nums.push_back(0);
-        for (int i=0; i<nums.size()-1; i++)
+        for (int i=0; i<nums.size(); i++)
         {
-            int index = abs(nums[i]);
+            int index = abs(nums[i])-1;
             if (nums[index] < 0)
-                res.push_back(index);
-            else
-                nums[index] = (nums[index] == 0)? INT_MIN: -abs(nums[index]);
+                res.push_back(abs(nums[i]));
+            nums[index] = -abs(nums[index]);
         }
         return res;
     }
