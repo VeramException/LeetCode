@@ -14,7 +14,7 @@ class Solution
         stack<int> s;   // Monotonic Stack --> store the latest smallest
         for (int i=0; i<N; i++)
         {
-            while (!s.empty() && nums[i] < nums[s.top()])   // ***mind "<" for right***
+            while (!s.empty() && nums[i] < nums[s.top()])   // ***mind "<" for left***
                 s.pop();
             
             if (!s.empty())
