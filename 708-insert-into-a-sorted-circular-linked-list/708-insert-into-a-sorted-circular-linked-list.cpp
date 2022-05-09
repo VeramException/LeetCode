@@ -14,9 +14,9 @@ class Solution
         
         while (curr != head)
         {
-            if (prev->val <= insertVal && insertVal <= curr->val)
+            if (prev->val <= insertVal && insertVal <= curr->val)                                 // General case
                 break;
-            else if (prev->val > curr->val && (prev->val < insertVal || insertVal < curr->val))
+            else if (prev->val > curr->val && (prev->val < insertVal || insertVal < curr->val))   // Important case**
                 break;
             
             prev = curr;
