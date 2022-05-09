@@ -8,7 +8,7 @@ class Solution
         
         for (int num: nums)
         {
-            sum = max(num, sum+num);
+            sum = max(num, sum+num);       //** Very important
             maxSum = max(maxSum, sum);
         }
         
