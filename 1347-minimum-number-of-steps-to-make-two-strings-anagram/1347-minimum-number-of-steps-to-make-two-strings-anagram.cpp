@@ -15,8 +15,7 @@ class Solution
             count[s2[i]]--;
                 
         for (int i = 0; i < NO_OF_CHARS; i++)
-            if (count[i] != 0)
-                totalSteps = totalSteps + abs(count[i]);
+             totalSteps = totalSteps + abs(count[i]);
         
         return totalSteps/2;
     }
