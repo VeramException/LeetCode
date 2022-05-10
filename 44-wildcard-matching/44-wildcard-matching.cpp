@@ -9,7 +9,7 @@ class Solution
     {
         int match;
         int lastStar = -1;
-        
+            
         int i = 0;
         int j = 0;
         while (i < s.size())
@@ -22,21 +22,19 @@ class Solution
             else if (j < p.size() && p[j] == '*')
             {
                 match = i;
-                lastStar = j;
-                j++;
+                lastStar = j++;
             }
             else if (lastStar >= 0)
             {
-                match++;
-                i = match;
+                i = ++match;
                 j = lastStar+1;
             }
             else
                 return false;
         }
         
-        // if there are any *s at the end of pattern, skip them.
-        while (j < p.size() && p[j] == '*') j++;
+        // Skip any extra *s at the end of pattern
+        while(j < p.size() && p[j]=='*') j++;
         
         return (j == p.size());
     }
