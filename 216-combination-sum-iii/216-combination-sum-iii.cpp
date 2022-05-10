@@ -15,7 +15,6 @@ class Solution
         if (currentComb.size() == k && n == 0)
             result.push_back(currentComb);
         
-        //if (currentComb.size() < k)
         for (int i=currentComb.empty()? 1: currentComb.back()+1 ; i<=9; i++)
         {
             if (n-i < 0)
