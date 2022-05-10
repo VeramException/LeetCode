@@ -34,7 +34,8 @@ class Solution
         }
         
         // Skip any extra *s at the end of pattern
-        while(j < p.size() && p[j]=='*') j++;
+        while(j < p.size() && p[j]=='*')
+            j++;
         
         return (j == p.size());
     }
