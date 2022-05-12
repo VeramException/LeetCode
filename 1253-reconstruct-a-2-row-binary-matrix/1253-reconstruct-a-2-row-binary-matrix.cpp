@@ -15,8 +15,10 @@ class Solution
         vector<int> smaller(N, 0);
         
         // First go through bigger one and fill all the colsum positions with value '2'
+        int totalColsum = 0;
         for (int i=0; i<N; i++)
         {
+            totalColsum += colsum[i];
             if (colsum[i] == 2)
             {
                 bigger[i] = 1;
@@ -24,6 +26,9 @@ class Solution
                 big--;
             }
         }
+        
+        if (totalColsum != upper+lower)
+            return {};
         
         for (int i=0; i<N; i++)
         {
