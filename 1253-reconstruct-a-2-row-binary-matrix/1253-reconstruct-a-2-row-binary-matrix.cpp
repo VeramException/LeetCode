@@ -3,10 +3,6 @@ class Solution
     public:
     vector<vector<int>> reconstructMatrix(int upper, int lower, vector<int>& colsum)
     {
-        // Base case
-        if (accumulate(colsum.begin(), colsum.end(), 0) != upper+lower)
-            return {};
-       
         int big   = max(upper, lower);
         int small = min(upper, lower);
 
