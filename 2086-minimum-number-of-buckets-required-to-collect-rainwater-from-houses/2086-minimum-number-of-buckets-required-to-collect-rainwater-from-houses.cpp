@@ -7,24 +7,20 @@ class Solution
         int N = s.size();       
         for (int i=0; i<N; i++)
         {
-            if (s[i] == 'H')
+            if (i > 0 && s[i-1] == 'B' && s[i] == 'H')
+                continue;
+            else if (i < N-1 && s[i] == 'H' && s[i+1] == '.')
             {
-                if (i > 0 && s[i-1] == 'B')
-                    continue;
-            
-                if (i+1<N && s[i+1] == '.')
-                {
-                    s[i+1] = 'B';
-                    buckets++;
-                }
-                else if (i-1>=0 && s[i-1] == '.')               
-                {
-                    s[i-1] = 'B';
-                    buckets++;
-                }
-                else
-                    return -1;
-            }            
+                s[i+1] = 'B';
+                buckets++;
+            }
+            else if (i > 0 && s[i-1] == '.' && s[i] == 'H')
+            {
+                s[i-1] = 'B';
+                buckets++;
+            }
+            else if (s[i] == 'H')
+                return -1;         
         }        
         return buckets;
     }
