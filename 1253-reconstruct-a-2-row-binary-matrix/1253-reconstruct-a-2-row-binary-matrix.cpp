@@ -3,58 +3,37 @@ class Solution
     public:
     vector<vector<int>> reconstructMatrix(int upper, int lower, vector<int>& colsum)
     {
-        int big   = max(upper, lower);
-        int small = min(upper, lower);
-
         int N = colsum.size();
-        vector<int> bigger(N, 0);
-        vector<int> smaller(N, 0);
+        vector<int> upperRow(N, 0);
+        vector<int> lowerRow(N, 0);
         
-        // First go through bigger one and fill all the colsum positions with value '2'
-        int totalColsum = 0;
-        for (int i=0; i<N; i++)
+        for (int i=0; i<colsum.size(); i++)
         {
-            totalColsum += colsum[i];
             if (colsum[i] == 2)
             {
-                bigger[i] = 1;
-                colsum[i]--;
-                big--;
+                upperRow[i] = 1;
+                lowerRow[i] = 1;
+                upper--;
+                lower--;
             }
-        }
-        
-        if (totalColsum != upper+lower)
-            return {};
-        
-        for (int i=0; i<N; i++)
-        {
-            if (big > 0 && colsum[i] == 1 && bigger[i] == 0)
+            else if (colsum[i] == 1)
             {
-                bigger[i] = 1;
-                colsum[i]--;
-                big--;
+                if (upper > lower)
+                {
+                    upperRow[i] = 1;
+                    upper--;
+                }
+                else
+                {
+                    lowerRow[i] = 1;
+                    lower--;
+                }
             }
         }
         
-        if (big != 0)
-            return {};
-        
-        for (int i=0; i<N; i++)
-        {
-            if (small > 0 && colsum[i] == 1 && smaller[i] == 0)
-            {
-                smaller[i] = 1;
-                colsum[i]--;
-                small--;
-            }
-        }
-        
-        if (small != 0)
-            return {};
-        
-        if (upper > lower)
-            return {bigger, smaller};
+        if (upper != 0 || lower != 0)
+            return { };
         else
-            return {smaller, bigger};
+            return {upperRow, lowerRow};
     }
 };
