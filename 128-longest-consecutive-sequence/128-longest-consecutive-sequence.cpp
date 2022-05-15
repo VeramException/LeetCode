@@ -14,10 +14,8 @@ class Solution
             {
                 int currMaxLength = 0;
                 while (s.count(num++) > 0)
-                {
                     currMaxLength++;
-                    res = max(res, currMaxLength);
-                }
+                res = max(res, currMaxLength);
             }
         }
         return res;
