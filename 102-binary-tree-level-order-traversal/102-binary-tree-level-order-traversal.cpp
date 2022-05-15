@@ -6,7 +6,9 @@ class Solution
         vector<vector<int>> res;
         
         queue<TreeNode*> q;
-        if (root) q.push(root);
+        if (root)
+            q.push(root);
+        
         while (!q.empty())
         {
             vector<int> currLevel;
