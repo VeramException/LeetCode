@@ -21,9 +21,9 @@ public:
         if (node == nullptr)
             return level;
         
-        
         int lLevel = maxDepthUtil(node->left, level+1);
         int rLevel = maxDepthUtil(node->right, level+1);
+        
         return max(lLevel, rLevel);
     }
 };
