@@ -9,9 +9,9 @@ class Solution
         {
             if (c == '(' || c == '{' || c == '[')
                 st.push(c);
-            else if ((c == ')' && (!st.empty() && st.top() == '(')) ||
-                     (c == '}' && (!st.empty() && st.top() == '{')) ||
-                     (c == ']' && (!st.empty() && st.top() == '[')))
+            else if ((c == ')' && !st.empty() && st.top() == '(') ||
+                     (c == '}' && !st.empty() && st.top() == '{') ||
+                     (c == ']' && !st.empty() && st.top() == '['))
                 st.pop();
             else
                 return false;
