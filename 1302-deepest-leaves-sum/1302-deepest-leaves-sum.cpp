@@ -16,8 +16,11 @@ class Solution
             return;
         
         if (deepest == level)
+        {
             deepestSum += node->val;
-        else if (deepest < level)
+        }
+        
+        if (deepest < level)
         {
             deepest = level;
             deepestSum = node->val;
