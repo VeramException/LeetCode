@@ -34,9 +34,9 @@ class Solution
             // (i+1) ==> number of bulbs we turned on so far.
             
             if (flips[i] > rightMost)
-                rightMost = flips[i];
+                rightMost = flips[i];  // Keep track of the right most turned-on bulb.
             
-            if (rightMost == i+1)
+            if (rightMost == i+1)      // If the count of bulbs (i+1) is same as the right most turned-on bulb, BINGO!
                 res++;
         }
         return res;
