@@ -18,11 +18,12 @@ class Solution
             carry = -(carry>>1);
         }
         
+        // [0] is a valid result, so make sure to use "res.size() > 1"
         while (res.size() > 1 && res.back() == 0)
             res.pop_back();
         
         reverse(res.begin(), res.end());
         
-        return res;        
+        return res;
     }
 };
