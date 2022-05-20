@@ -15,11 +15,12 @@ class Solution
             {
                 int r = x;
                 int c = s-r;
-               
+              
                 if (s%2 == 0) //even
                     swap(r, c);
-  
-                if (r >= rows || c >= cols)
+
+                // We have to do this check only after finalizing [r][c] values
+                if (r >= rows || c >= cols) 
                     continue;
                 
                 result.push_back(grid[r][c]);
