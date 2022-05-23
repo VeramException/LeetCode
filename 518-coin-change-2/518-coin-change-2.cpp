@@ -11,12 +11,12 @@ class Solution
         vector<int> DP(amount+1, 0);
         
         DP[0]=1;
-        for (int r=0; r<coins.size(); r++)
+        for (int coin: coins)
         {
-            for (int c=1; c<=amount; c++)
+            for (int a=1; a<=amount; a++)
             {
-                if (coins[r] <= c)
-                    DP[c] = DP[c] + DP[c-coins[r]];
+                if (coin <= a)
+                    DP[a] = DP[a] + DP[a-coin];
             }
         }
         
