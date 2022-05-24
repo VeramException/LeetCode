@@ -7,6 +7,7 @@ class Solution
         int open = 0;
         int close = 0;
         
+        // Left to Right
         for (int i=0; i<s.size(); i++)
         {
             if (s[i] == '(')
@@ -23,6 +24,7 @@ class Solution
             }
         }
         
+        // Right to Left
         open  = 0;
         close = 0;
         for (int i=s.size()-1; i>=0; i--)
