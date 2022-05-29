@@ -19,11 +19,11 @@ class Solution
     {
         if (root == nullptr)
         {
-            s += "#";
+            s += ",#";
             return;
         }
         
-        s += "<" + to_string(root->val) + ">";
+        s += "," + to_string(root->val);
         buildPreorder(root->left, s);        
         buildPreorder(root->right, s);
     }
