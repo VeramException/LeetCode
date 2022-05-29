@@ -8,6 +8,8 @@ class Solution
         return res;
     }
     
+    // res - diameter of binary tree with root as 'root'
+    // returns 'height of tree'
     int diameterOfBinaryTreeUtil(TreeNode* root, int& res)
     {
         if (root == nullptr)
