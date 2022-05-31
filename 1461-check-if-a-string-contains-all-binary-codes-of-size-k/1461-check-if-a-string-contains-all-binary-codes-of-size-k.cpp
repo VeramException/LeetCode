@@ -11,8 +11,7 @@ class Solution
             if (r - l + 1 == k)
                 combs.insert(s.substr(l++, k));
             r++;
-        }
-        
+        }        
         return (pow(2,k)==combs.size());
     }
 };
