@@ -5,18 +5,12 @@ class Solution
     
     bool hasAllCodes(string s, int k)
     {
-        int l = 0, r = 0;
-        
+        int l = 0, r = 0;        
         while (r < s.size())
         {
-            if (r - l + 1 < k)
-                r++;
-            else
-            {
-                combs.insert(s.substr(l,k));                
-                r++;
-                l++;
-            }
+            if (r - l + 1 == k)
+                combs.insert(s.substr(l++, k));
+            r++;
         }
         
         return (pow(2,k)==combs.size());
