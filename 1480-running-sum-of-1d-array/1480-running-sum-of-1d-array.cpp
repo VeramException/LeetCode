@@ -3,14 +3,8 @@ class Solution
     public:
     vector<int> runningSum(vector<int>& nums)
     {
-        vector<int> res;
-        
-        int sum = 0;
-        for (int num: nums)
-        {
-            sum += num;
-            res.push_back(sum);
-        }
-        return res;
+        for (int i=1; i<nums.size(); i++)
+            nums[i] += nums[i-1];
+        return nums;
     }
 };
