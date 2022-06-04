@@ -6,17 +6,18 @@ class Solution
     unordered_set<int> posDiag;   // 'row+col' stays constant
     unordered_set<int> negDiag;   // 'row-col' stays constant
     
+    vector<string> board;
     vector<vector<string>> res;
     
     vector<vector<string>> solveNQueens(int siz)
     {
         n = siz;
-        vector<string> board(n, string(n, '.'));
-        backtrack(0, board);
+        board.resize(n, string(n, '.'));
+        backtrack(0);
         return res;
     }
     
-    void backtrack(int r, vector<string>& board)
+    void backtrack(int r)
     {
         if (r == n)
         {
@@ -34,7 +35,7 @@ class Solution
             negDiag.insert(r-c);            
             board[r][c] = 'Q';
             
-            backtrack(r+1, board);
+            backtrack(r+1);
             
             cols.erase(c);
             posDiag.erase(r+c);
