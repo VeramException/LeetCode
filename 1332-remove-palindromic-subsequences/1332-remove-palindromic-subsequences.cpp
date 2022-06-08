@@ -3,10 +3,7 @@ class Solution
     public:
     int removePalindromeSub(string s)
     {
-        if (s.empty())
-            return 0;
-        
-        return isPalindrome(s)? 1: 2;
+        return s.empty()? 0: (isPalindrome(s)? 1: 2);
     }
     
     bool isPalindrome(string& s)
