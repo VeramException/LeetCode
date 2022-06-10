@@ -3,7 +3,7 @@ class Solution
     public:
     int lengthOfLongestSubstring(string s)
     {
-        unordered_set<char> visited; // O(1) - Because it contains only a maximum of 256 characters
+        unordered_set<char> visited; // O(1) - Because it contains only a maximum of 128 characters
                 
         int l = 0;
         int r = 0;
