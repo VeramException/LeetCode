@@ -7,22 +7,16 @@ class Solution
         int l=0, r=0, n=nums.size(), currSum=0, maxSum=0;
         while (r < n)
         {
-            if (visited.count(nums[r]) == 0)
+            while (visited.count(nums[r]) != 0)
             {
-                visited.insert(nums[r]);
-                currSum += nums[r];
-                maxSum = max(maxSum, currSum);
-                r++;
+                visited.erase(nums[l]);
+                currSum -= nums[l];
+                l++;
             }
-            else
-            {
-                while (visited.count(nums[r]) != 0)
-                {
-                    visited.erase(nums[l]);
-                    currSum -= nums[l];
-                    l++;
-                }
-            }
+            visited.insert(nums[r]);
+            currSum += nums[r];
+            maxSum = max(maxSum, currSum);
+            r++;
         }
         
         return maxSum;
