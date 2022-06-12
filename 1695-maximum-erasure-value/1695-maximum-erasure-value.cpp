@@ -17,8 +17,7 @@ class Solution
             currSum += nums[r];
             maxSum = max(maxSum, currSum);
             r++;
-        }
-        
+        }        
         return maxSum;
     }
 };
