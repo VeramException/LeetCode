@@ -9,13 +9,8 @@ class Solution
             int m = triangle[i].size();
             for (int j=0; j<m; j++)
             {
-                if (j == 0)
-                    triangle[i][0] += triangle[i-1][0];
-                else if (j == triangle[i].size()-1)
-                    triangle[i][j] += triangle[i-1][j-1];
-                else
-                    triangle[i][j] += min(triangle[i-1][max(0, j-1)], 
-                                          triangle[i-1][min(m-1, j)]);
+                triangle[i][j] += min(triangle[i-1][max(0, j-1)], 
+                                          triangle[i-1][min(m-2, j)]);
                 
                 if (i == n-1)
                     res = min (res, triangle[i][j]);
