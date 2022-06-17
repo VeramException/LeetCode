@@ -1,6 +1,6 @@
 #define NO_CAMERA       0
-#define HAS_CAMERA      2
-#define NOT_NEEDED      1
+#define HAS_CAMERA      1
+#define NOT_NEEDED      2
 
 class Solution
 {
